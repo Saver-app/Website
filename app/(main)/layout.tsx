@@ -107,8 +107,16 @@ export default function RootLayout({
               */}
               <MultiColumnFooter
                 appIcon={<AppIcon src="/app_view/saver_app_icon_white.png" size={48} mask={true} />}
-                footnoteLeading={<span>© 2025 Saver</span>}
-                footnoteTrailing={<span>Privacy · Terms</span>}
+                footnoteLeading={<span>© 2026 Paul Gerling. All rights reserved.</span>}
+                footnoteTrailing={
+                  <span>
+                    <a href="/privacy" style={{ textDecoration: "none", color: "inherit" }}>Privacy</a>
+                    {" · "}
+                    <a href="/terms" style={{ textDecoration: "none", color: "inherit" }}>Terms</a>
+                    {" · "}
+                    <a href="/impressum" style={{ textDecoration: "none", color: "inherit" }}>Legal Notice</a>
+                  </span>
+                }
               >
                 <MultiColumnFooter.Column
                   title="Product"
