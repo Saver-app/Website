@@ -89,12 +89,12 @@ export default function RootLayout({
                 icon={<AppIcon src="/app_view/saver_app_icon_dark.png" />}
                 appName="Saver"
                 links={[
-                  { label: "Download", href: "https://twitter.com/yourprofile", external: true },
+                  { label: "Download", href: "", external: true },
                   { label: "Features", href: "#features" },
                   // Uncomment the line below once you're ready to start using Release Notes
                   // { label: "Release Notes", href: "/release-notes" },
                   { label: "Pricing", href: "#pricing" },
-                  { label: "Web App", href: "https://saver-app.com/app", external: true },
+                  { label: "Web App", href: "https://app.saver-app.com", external: true },
                 ]}
                 action={<DownloadActionButton />}
               />
