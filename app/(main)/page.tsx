@@ -11,24 +11,14 @@ export default function Page() {
     <>
       <Section paddingTop={100}>
         <Hero
-          title="App Title"
-          subtitle="Short app description that highlights what the app does and its key value"
+          title="Saver"
+          subtitle="Save all you need in one place and access it from any device, anytime."
           media={
             <Hero.Image
-              src="/app_view/screenshot_placeholder.png"
+              src="/app_view/sim_screenshot.png"
               bezel="iPhone 17 Black"
               alt=""
             />
-          }
-          badges={
-            <>
-              <RatingLaurelsBadge
-                showStars={true}
-                rating={4.9}
-                caption="worldwide rating"
-              />
-              <AppleFeatureLaurelsBadge featureName="App of the Day" />
-            </>
           }
           action={<DownloadActionButton size="medium" />}
         />

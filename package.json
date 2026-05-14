@@ -4,13 +4,17 @@
   "private": true,
   "description": "Website template for iOS apps",
   "main": "index.js",
+  "bin": {
+    "app-view": "./bin/app-view.mjs"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ./app ./src --ext .ts,.tsx,.js,.jsx",
     "take-og-snapshot": "node ./scripts/take_og_snapshot.mjs",
-    "generate-favicon": "node ./scripts/generate_favicon.mjs"
+    "generate-favicon": "node ./scripts/generate_favicon.mjs",
+    "app-view": "node ./bin/app-view.mjs"
   },
   "repository": {
     "type": "git",

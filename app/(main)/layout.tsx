@@ -12,6 +12,7 @@ import { ThemeStyle } from "@/components/theme_style/theme_style";
 import "@/global.css";
 import { ThemeProvider } from "@/providers/theme_provider";
 import { Section } from "@/components/section/section";
+import { MultiColumnFooter } from "@/components/multi_column_footer/multi_column_footer";
 
 export const metadata: Metadata = {
   /**
@@ -19,13 +20,13 @@ export const metadata: Metadata = {
    * Recommended length for title is max 60 characters.
    * Recommended length for description is max 160 characters.
    */
-  title: "Website title",
-  description: "Website description",
+  title: "Saver App",
+  description: "Saver is an To Do, Habit and Bookmarks app.",
 
   /**
    * Your website URL.
    */
-  metadataBase: new URL("https://app-website-url.com"),
+  metadataBase: new URL("https://saver-app.com"),
 
   /**
    * Info inside `openGraph` and `twitter` is used to show rich previews
@@ -35,9 +36,9 @@ export const metadata: Metadata = {
    * run the dev server and go to `http://localhost:3000/open-graph-builder`.
    */
   openGraph: {
-    title: "App title",
-    description: "App description",
-    url: "https://app-website-url.com",
+    title: "Saver App",
+    description: "Saver App description",
+    url: "https://saver-app.com",
     images: [
       {
         url: "/og-preview.png",
@@ -50,8 +51,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "App title",
-    description: "App description",
+    title: "Saver App",
+    description: "Saver App description",
     images: ["/og-preview.png"],
   },
 };
@@ -69,6 +70,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme={THEME}>
       <head>
+        <title>Saver App</title>
         {/* This makes Safari on iOS show the App Store download banner */}
         {!IS_WAITLIST_ENABLED && (
           <meta name="apple-itunes-app" content={`app-id=${APP_ID}`} />
@@ -84,13 +86,15 @@ export default function RootLayout({
           {!IS_WAITLIST_ENABLED && (
             <>
               <Navbar
-                icon={<AppIcon src="/app_view/icon_placeholder.png" />}
-                appName="App Name"
+                icon={<AppIcon src="/app_view/saver_app_icon_dark.png" />}
+                appName="Saver"
                 links={[
+                  { label: "Download", href: "https://twitter.com/yourprofile", external: true },
                   { label: "Features", href: "#features" },
                   // Uncomment the line below once you're ready to start using Release Notes
                   // { label: "Release Notes", href: "/release-notes" },
-                  { label: "Contact", href: "mailto:your.email@gmail.com" },
+                  { label: "Pricing", href: "#pricing" },
+                  { label: "Web App", href: "https://saver-app.com/app", external: true },
                 ]}
                 action={<DownloadActionButton />}
               />
@@ -101,44 +105,41 @@ export default function RootLayout({
                 There is also a <MultiColumnFooter> component available
                 in case you need more space for links.
               */}
-              <CompactFooter
-                appIcon={
-                  <AppIcon
-                    src="/app_view/icon_placeholder.png"
-                    filter="grayscale"
-                  />
-                }
-                links={[
-                  { label: "Privacy", href: "/privacy" },
-                  {
-                    label: "Terms of Use",
-                    href: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
-                    external: true,
-                  },
-                  {
-                    label: "Follow Updates",
-                    href: "https://your-social-media.com",
-                  },
-                ]}
-                footnoteLeading={`© ${new Date().getFullYear()}. All rights reserved.`}
-                footnoteTrailing={
-                  // I'd appreciate if you leave this link here, but feel free to remove it, no hard feelings :)
-                  <>
-                    Website is built with{" "}
-                    <a target="_blank" href="https://appview.dev">
-                      AppView
-                    </a>
-                  </>
-                }
-              />
+              <MultiColumnFooter
+                appIcon={<AppIcon src="/app_view/saver_app_icon_white.png" size={48} mask={true} />}
+                footnoteLeading={<span>© 2025 Saver</span>}
+                footnoteTrailing={<span>Privacy · Terms</span>}
+              >
+                <MultiColumnFooter.Column
+                  title="Product"
+                  links={[
+                    { label: "Features", href: "#features" },
+                    { label: "Pricing", href: "#pricing" },
+                  ]}
+                />
+                <MultiColumnFooter.Column
+                  title="Company"
+                  links={[
+                    { label: "Support", href: "/support", external: true },
+                    { label: "Contact", href: "/contact", external: true },
+                  ]}
+                />
+                <MultiColumnFooter.Column
+                  title="Follow Us"
+                  links={[
+                    { label: "Twitter", href: "https://twitter.com/yourprofile", external: true },
+                    { label: "LinkedIn", href: "https://linkedin.com/company/yourcompany", external: true },
+                  ]}
+                />
+              </MultiColumnFooter>
             </>
           )}
 
           {IS_WAITLIST_ENABLED && (
             <Section paddingTop={60}>
               <Hero
-                title="App Title"
-                subtitle="Short app description that highlights what the app does and its key value"
+                title="Saver"
+                subtitle="Save all you need in one place and access it from any device, anytime."
                 media={
                   <Hero.Image
                     src="/app_view/screenshot_placeholder.png"
