@@ -94,9 +94,8 @@ export default function RootLayout({
                   // Uncomment the line below once you're ready to start using Release Notes
                   // { label: "Release Notes", href: "/release-notes" },
                   { label: "Pricing", href: "#pricing" },
-                  { label: "Web App", href: "https://app.saver-app.com", external: true },
                 ]}
-                action={<DownloadActionButton />}
+                action={<DownloadActionButton label="Open Web App" href="https://app.saver-app.com" showAppleLogo={false} />}
               />
 
               {children}

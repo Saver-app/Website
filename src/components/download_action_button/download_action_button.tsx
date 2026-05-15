@@ -6,12 +6,14 @@ interface DownloadActionButtonProps {
   href?: string;
   label?: string;
   size?: "small" | "medium" | "large";
+  showAppleLogo?: boolean;
 }
 
 export function DownloadActionButton({
   href = `https://apps.apple.com/app/id${APP_ID}`,
   label = "Download",
   size = "small",
+  showAppleLogo = true,
 }: DownloadActionButtonProps) {
   let appleLogoSize;
 
@@ -35,9 +37,12 @@ export function DownloadActionButton({
       target="_blank"
     >
       <div className={styles.label}>
-        <div className={styles.appleLogo}>
-          <AppleLogo width={appleLogoSize} height={appleLogoSize} />
-        </div>
+        {showAppleLogo && (
+          <div className={styles.appleLogo}>
+            <AppleLogo width={appleLogoSize} height={appleLogoSize} />
+          </div>
+        )}
+        
         <div className={styles.downloadLabel}>{label}</div>
       </div>
     </a>
