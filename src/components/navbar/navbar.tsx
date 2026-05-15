@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { Icon } from "@/components/icon/icon";
 import styles from "./navbar.module.css";
 
 interface NavbarProps {
@@ -8,9 +10,27 @@ interface NavbarProps {
   appName: string;
   links?: { label: string; href: string; external?: boolean }[];
   action: React.ReactNode;
+  actionHref?: string;
 }
 
-export function Navbar({ icon, appName, links, action }: NavbarProps) {
+export function Navbar({ icon, appName, links, action, actionHref }: NavbarProps) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const closeMenu = () => setMobileMenuOpen(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(width < 768px)");
+
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      if (!e.matches) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleMediaChange);
+    return () => mediaQuery.removeEventListener("change", handleMediaChange);
+  }, []);
+
   return (
     <>
       <div className={styles.spacer}></div>
@@ -42,8 +62,52 @@ export function Navbar({ icon, appName, links, action }: NavbarProps) {
             </ul>
 
             <div className={styles.action}>{action}</div>
+
+            <button
+              className={styles.mobileMenuButton}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
+            >
+              <Icon
+                name={mobileMenuOpen ? "close" : "menu"}
+                filled
+                size="large"
+              />
+            </button>
           </div>
         </nav>
+
+        {mobileMenuOpen && (
+          <div className={styles.mobileMenu}>
+            <ul className={styles.mobileMenuLinks}>
+              {links?.map((link) => {
+                const href = link.href.startsWith("#")
+                  ? `/${link.href}`
+                  : link.href;
+
+                return (
+                  <li key={link.href}>
+                    {link.external ? (
+                      <a href={href} onClick={closeMenu}>
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link href={href} onClick={closeMenu}>
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+            {actionHref && (
+              <a href={actionHref} className={styles.mobileMenuActionLink} onClick={closeMenu}>
+                Open Web App
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </>
   );
