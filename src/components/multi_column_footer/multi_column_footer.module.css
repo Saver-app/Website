@@ -23,6 +23,12 @@
   gap: 64px;
 }
 
+.linkColumnStack {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
 .footnotes {
   display: flex;
   justify-content: space-between;
@@ -48,7 +54,10 @@
   }
 
   .linkColumns {
-    flex-direction: column;
+    gap: 32px;
+  }
+
+  .linkColumnStack {
     gap: 32px;
   }
 

@@ -8,6 +8,10 @@ interface MultiColumnFooterProps {
   children?: React.ReactNode;
 }
 
+interface MultiColumnFooterStackProps {
+  children?: React.ReactNode;
+}
+
 export function MultiColumnFooter({
   appIcon,
   children,
@@ -29,3 +33,9 @@ export function MultiColumnFooter({
 }
 
 MultiColumnFooter.Column = FooterColumn;
+
+function MultiColumnFooterStack({ children }: MultiColumnFooterStackProps) {
+  return <div className={styles.linkColumnStack}>{children}</div>;
+}
+
+MultiColumnFooter.Stack = MultiColumnFooterStack;
