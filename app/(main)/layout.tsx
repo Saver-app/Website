@@ -142,10 +142,10 @@ export default function RootLayout({
                 <MultiColumnFooter.Column
                   title="Follow Us"
                   links={[
-                    { label: "Instagram", href: "https://www.instagram.com/saver_app_official/", external: true },
-                    { label: "YouTube", href: "https://www.youtube.com/@saverapp", external: true },
                     { label: "GitHub", href: "https://github.com/Saver-app", external: true },
-
+                    { label: "YouTube", href: "https://www.youtube.com/@saverapp", external: true },
+                    { label: "Instagram", href: "https://www.instagram.com/saver_app_official/", external: true },
+                    { label: "Twitter", href: "https://x.com/SaverAppX", external: true },
                   ]}
                 />
               </MultiColumnFooter>
