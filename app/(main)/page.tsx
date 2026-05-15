@@ -12,7 +12,7 @@ export default function Page() {
       <Section paddingTop={100}>
         <Hero
           title="Saver"
-          subtitle="Save all you need in one place and access it from any device, anytime."
+          subtitle="Save all you need in one place and access it from any device, anytime. (Coming soon)"
           media={
             <Hero.Image
               src="/app_view/sim_screenshot.png"

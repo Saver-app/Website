@@ -91,11 +91,10 @@ export default function RootLayout({
                 links={[
                   { label: "Download", href: "", external: true },
                   { label: "Features", href: "#features" },
-                  // Uncomment the line below once you're ready to start using Release Notes
-                  // { label: "Release Notes", href: "/release-notes" },
                   { label: "Pricing", href: "#pricing" },
                 ]}
                 action={<DownloadActionButton label="Open Web App" href="https://app.saver-app.com" showAppleLogo={false} />}
+                actionHref="https://app.saver-app.com"
               />
 
               {children}
@@ -118,24 +117,35 @@ export default function RootLayout({
                 }
               >
                 <MultiColumnFooter.Column
-                  title="Product"
+                  title="Saver"
                   links={[
+                    { label: "Download", href: "/download" },
                     { label: "Features", href: "#features" },
                     { label: "Pricing", href: "#pricing" },
+                    { label: "Release Notes", href: "/release-notes" },
                   ]}
                 />
-                <MultiColumnFooter.Column
-                  title="Company"
-                  links={[
-                    { label: "Support", href: "/support", external: true },
-                    { label: "Contact", href: "/contact", external: true },
-                  ]}
-                />
+                <MultiColumnFooter.Stack>
+                  <MultiColumnFooter.Column
+                    title="Support"
+                    links={[
+                      { label: "Contact Us", href: "mailto:support@saver-app.dev", external: true },
+                    ]}
+                  />
+                  <MultiColumnFooter.Column
+                    title="Community"
+                    links={[
+                      { label: "Discord", href: "https://discord.gg/f7BGpQFSeF", external: true },
+                    ]}
+                  />
+                </MultiColumnFooter.Stack>
                 <MultiColumnFooter.Column
                   title="Follow Us"
                   links={[
-                    { label: "Twitter", href: "https://twitter.com/yourprofile", external: true },
-                    { label: "LinkedIn", href: "https://linkedin.com/company/yourcompany", external: true },
+                    { label: "Instagram", href: "https://www.instagram.com/saver_app_official/", external: true },
+                    { label: "YouTube", href: "https://www.youtube.com/@saverapp", external: true },
+                    { label: "GitHub", href: "https://github.com/Saver-app", external: true },
+
                   ]}
                 />
               </MultiColumnFooter>

@@ -25,6 +25,7 @@ export default function ImpressumPage() {
       </p>
       <ul>
         <li>https://saver-app.com/</li>
+        <li>https://app.saver-app.com/</li>
       </ul>
     </>
   );
