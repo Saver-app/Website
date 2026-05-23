@@ -15,6 +15,10 @@ export default function ImpressumPage() {
         <br />
         Germany
       </p>
+
+      <p>
+        VAT ID: DE456252412
+      </p>
       <p>
         Email: <a href="mailto:contact@saver-app.dev">contact@saver-app.dev</a>
       </p>
