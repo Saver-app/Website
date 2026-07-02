@@ -36,8 +36,8 @@ export const metadata: Metadata = {
    * run the dev server and go to `http://localhost:3000/open-graph-builder`.
    */
   openGraph: {
-    title: "Saver App",
-    description: "Saver App description",
+    title: "Saver - Tasks, Bookmarks & Habits",
+    description: "Saver brings bookmarks, to-dos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
     url: "https://saver-app.com",
     images: [
       {
@@ -51,8 +51,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Saver App",
-    description: "Saver App description",
+    title: "Saver - Tasks, Bookmarks & Habits",
+    description: "Saver brings bookmarks, to-dos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
     images: ["/og-preview.png"],
   },
 };
