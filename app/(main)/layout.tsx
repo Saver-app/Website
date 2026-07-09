@@ -20,8 +20,8 @@ export const metadata: Metadata = {
    * Recommended length for title is max 60 characters.
    * Recommended length for description is max 160 characters.
    */
-  title: "Saver App",
-  description: "Saver is an To Do, Habit and Bookmarks app.",
+  title: "Saver",
+  description: "Saver brings bookmarks, to-dos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
 
   /**
    * Your website URL.
