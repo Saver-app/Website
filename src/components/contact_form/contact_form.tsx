@@ -27,7 +27,14 @@ export function ContactForm() {
         },
       });
 
-      if (!response.ok) {
+      const result: unknown = await response.json();
+      const wasAccepted =
+        typeof result === "object" &&
+        result !== null &&
+        "success" in result &&
+        (result.success === true || result.success === "true");
+
+      if (!response.ok || !wasAccepted) {
         throw new Error("Support request could not be delivered");
       }
 
