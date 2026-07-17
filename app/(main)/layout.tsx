@@ -131,7 +131,7 @@ export default function RootLayout({
                   <MultiColumnFooter.Column
                     title="Support"
                     links={[
-                      { label: "Contact Us", href: "mailto:support@saver-app.dev", external: true },
+                      { label: "Contact Us", href: "/support" },
                     ]}
                   />
                   <MultiColumnFooter.Column

@@ -1,0 +1,239 @@
+.card {
+  width: calc(100% - 40px);
+  max-width: 720px;
+  padding: 36px;
+  color: var(--color-text-primary);
+  background-color: color-mix(in srgb, var(--color-fill-0) 70%, transparent);
+  border: 1px solid var(--color-fill-0);
+  border-radius: 32px;
+  box-shadow: inset 0 0 25px var(--color-fill-0),
+    0 20px 45px color(display-p3 0 0 0 / 0.04);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.twoColumnRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  padding-left: 2px;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  color: var(--color-text-primary);
+  background: var(--color-fill-1);
+  border: 1px solid var(--color-fill-2);
+  border-radius: 14px;
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.field input,
+.field select {
+  min-height: 52px;
+  padding: 0 16px;
+}
+
+.field textarea {
+  min-height: 156px;
+  padding: 14px 16px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 1;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--color-accent-blue);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent-blue) 18%, transparent);
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.selectWrapper::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--color-text-secondary);
+  border-bottom: 2px solid var(--color-text-secondary);
+  pointer-events: none;
+  transform: translateY(-70%) rotate(45deg);
+}
+
+.field select {
+  appearance: none;
+  padding-right: 44px;
+}
+
+.formFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.privacyNote {
+  max-width: 390px;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.privacyNote a,
+.errorMessage a {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.submitButton {
+  flex: 0 0 auto;
+  min-width: 148px;
+  padding: 12px 20px;
+  color: var(--color-text-accent-brand);
+  background: var(--color-accent-brand);
+  border: none;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 650;
+  transition: opacity 100ms ease, transform 100ms ease;
+}
+
+.submitButton:hover {
+  opacity: 0.72;
+}
+
+.submitButton:active {
+  transform: scale(0.98);
+}
+
+.submitButton:focus-visible {
+  outline: 3px solid var(--color-accent-blue);
+  outline-offset: 3px;
+}
+
+.submitButton:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.status:empty {
+  display: none;
+}
+
+.successMessage,
+.errorMessage {
+  padding: 13px 15px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.successMessage {
+  color: var(--color-accent-green);
+  background: color-mix(in srgb, var(--color-accent-green) 10%, transparent);
+}
+
+.errorMessage {
+  color: var(--color-accent-red);
+  background: color-mix(in srgb, var(--color-accent-red) 10%, transparent);
+}
+
+.alternative {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 30px;
+  padding-top: 28px;
+  border-top: 1px solid var(--color-fill-2);
+  color: var(--color-text-secondary);
+  font-size: 15px;
+}
+
+.alternative a {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.honeypot {
+  display: none;
+}
+
+@container root style(--color-scheme: dark) {
+  .card {
+    background-color: color-mix(in srgb, var(--color-fill-2) 70%, transparent);
+    border-color: var(--color-fill-3);
+    box-shadow: inset 0 0 25px var(--color-fill-2);
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    background: color-mix(in srgb, var(--color-fill-0) 38%, transparent);
+    border-color: var(--color-fill-3);
+  }
+
+  .alternative {
+    border-top-color: var(--color-fill-3);
+  }
+}
+
+@container root (width < 600px) {
+  .card {
+    width: calc(100% - 28px);
+    padding: 24px 20px;
+    border-radius: 26px;
+  }
+
+  .twoColumnRow {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .formFooter {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .submitButton {
+    width: 100%;
+    min-height: 50px;
+  }
+
+  .alternative {
+    flex-direction: column;
+    align-items: center;
+  }
+}
