@@ -5,7 +5,8 @@ import { useState } from "react";
 import styles from "./contact_form.module.css";
 
 const SUPPORT_EMAIL = "support@saver-app.dev";
-const FORM_ENDPOINT = `https://formsubmit.co/ajax/${SUPPORT_EMAIL}`;
+const FORM_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_ACCESS_KEY = "8975af3a-4d99-404d-bd52-5c826047bb3d";
 
 type SubmissionStatus = "idle" | "submitting" | "success" | "error";
 
@@ -19,10 +20,12 @@ export function ContactForm() {
     setStatus("submitting");
 
     try {
+      const formData = Object.fromEntries(new FormData(form));
       const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
-        body: new FormData(form),
+        body: JSON.stringify(formData),
         headers: {
+          "Content-Type": "application/json",
           Accept: "application/json",
         },
       });
@@ -32,7 +35,7 @@ export function ContactForm() {
         typeof result === "object" &&
         result !== null &&
         "success" in result &&
-        (result.success === true || result.success === "true");
+        result.success === true;
 
       if (!response.ok || !wasAccepted) {
         throw new Error("Support request could not be delivered");
@@ -60,14 +63,17 @@ export function ContactForm() {
         onSubmit={onSubmit}
         onInput={onInput}
       >
-        <input type="hidden" name="_subject" value="New Saver support request" />
-        <input type="hidden" name="_template" value="table" />
+        <input
+          type="hidden"
+          name="access_key"
+          value={WEB3FORMS_ACCESS_KEY}
+        />
+        <input type="hidden" name="subject" value="New Saver support request" />
         <input
           className={styles.honeypot}
-          type="text"
-          name="_honey"
+          type="checkbox"
+          name="botcheck"
           tabIndex={-1}
-          autoComplete="off"
           aria-hidden="true"
         />
 
