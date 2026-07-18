@@ -36,6 +36,9 @@ export const MATERIAL_SYMBOLS = [
   "pause",
   "lock",
   "target",
+  "smartphone",
+  "extension",
+  "smart_toy",
   "menu",
   "close",
 ] as const;

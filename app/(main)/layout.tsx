@@ -21,7 +21,7 @@ export const metadata: Metadata = {
    * Recommended length for description is max 160 characters.
    */
   title: "Saver",
-  description: "Saver brings bookmarks, to-dos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
+  description: "Saver brings bookmarks, todos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
 
   /**
    * Your website URL.
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
    * run the dev server and go to `http://localhost:3000/open-graph-builder`.
    */
   openGraph: {
-    title: "Saver - Tasks, Bookmarks & Habits",
-    description: "Saver brings bookmarks, to-dos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
+    title: "Saver: Tasks, Bookmarks and Habits",
+    description: "Saver brings bookmarks, todos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
     url: "https://saver-app.com",
     images: [
       {
@@ -51,8 +51,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Saver - Tasks, Bookmarks & Habits",
-    description: "Saver brings bookmarks, to-dos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
+    title: "Saver: Tasks, Bookmarks and Habits",
+    description: "Saver brings bookmarks, todos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
     images: ["/og-preview.png"],
   },
 };
@@ -143,6 +143,14 @@ export default function RootLayout({
                     ]}
                   />
                 </MultiColumnFooter.Stack>
+                <MultiColumnFooter.Column
+                  title="Legal"
+                  links={[
+                    { label: "Privacy Policy", href: "/privacy" },
+                    { label: "Terms of Service", href: "/terms" },
+                    { label: "Return & Refund Policy", href: "/return-policy" },
+                  ]}
+                />
                 <MultiColumnFooter.Column
                   title="Follow Us"
                   links={[
