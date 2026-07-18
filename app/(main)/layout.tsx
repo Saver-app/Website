@@ -112,6 +112,8 @@ export default function RootLayout({
                     {" · "}
                     <a href="/terms" style={{ textDecoration: "none", color: "inherit" }}>Terms</a>
                     {" · "}
+                    <a href="/return-policy" style={{ textDecoration: "none", color: "inherit" }}>Return Policy</a>
+                    {" · "}
                     <a href="/impressum" style={{ textDecoration: "none", color: "inherit" }}>Legal Notice</a>
                     {" · "}
                     <a href="/credits" style={{ textDecoration: "none", color: "inherit" }}>Credits</a>
