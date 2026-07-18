@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     url: "https://saver-app.com",
     images: [
       {
-        url: "/og-preview.png",
+        url: "/ogpreview20260718.png",
         width: 1200,
-        height: 720,
+        height: 630,
         alt: "",
       },
     ],
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Saver: Tasks, Bookmarks and Habits",
     description: "Saver brings bookmarks, todos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
-    images: ["/og-preview.png"],
+    images: ["/ogpreview20260718.png"],
   },
 };
 
