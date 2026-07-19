@@ -1,4 +1,4 @@
-import { APP_ID } from "@/constants";
+import { APP_STORE_URL } from "@/constants";
 import AppleLogo from "@/public/app_view/apple_logo.svg";
 import styles from "./download_action_button.module.css";
 
@@ -7,13 +7,17 @@ interface DownloadActionButtonProps {
   label?: string;
   size?: "small" | "medium" | "large";
   showAppleLogo?: boolean;
+  variant?: "primary" | "secondary";
+  openInNewTab?: boolean;
 }
 
 export function DownloadActionButton({
-  href = `https://apps.apple.com/app/id${APP_ID}`,
+  href = APP_STORE_URL,
   label = "Download",
   size = "small",
   showAppleLogo = true,
+  variant = "primary",
+  openInNewTab = true,
 }: DownloadActionButtonProps) {
   let appleLogoSize;
 
@@ -33,8 +37,9 @@ export function DownloadActionButton({
   return (
     <a
       href={href}
-      className={`${styles.downloadActionButton} ${styles[size]}`}
-      target="_blank"
+      className={`${styles.downloadActionButton} ${styles[size]} ${styles[variant]}`}
+      target={openInNewTab ? "_blank" : undefined}
+      rel={openInNewTab ? "noreferrer" : undefined}
     >
       <div className={styles.label}>
         {showAppleLogo && (

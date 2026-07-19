@@ -1,0 +1,141 @@
+.downloadPage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.downloadGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 46px;
+  scroll-margin-top: 100px;
+}
+
+.downloadGroup:first-child {
+  margin-top: 0;
+}
+
+.downloadGroup h2 {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 0 30px;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.downloadGrid {
+  width: calc(100% - 40px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.downloadCard {
+  min-height: 225px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 26px;
+  border: 1px solid var(--color-fill-0);
+  border-radius: 35px;
+  background: color-mix(in srgb, var(--color-fill-0) 50%, transparent);
+  box-shadow: inset 0 0 25px var(--color-fill-0);
+}
+
+.cardIcon {
+  height: 36px;
+}
+
+.cardCopy {
+  flex: 1;
+  margin-top: 18px;
+}
+
+.cardCopy h3 {
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.cardCopy p {
+  max-width: 390px;
+  margin-top: 6px;
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.downloadLink,
+.storeLabel {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.downloadLink {
+  background: var(--color-accent-brand);
+  color: var(--color-text-accent-brand);
+  transition: transform 0.15s ease-in-out;
+}
+
+.downloadLink:hover {
+  transform: scale(1.03);
+}
+
+.downloadLink:active {
+  transform: scale(0.97);
+}
+
+.storeLabel {
+  border: 1px solid var(--color-fill-3);
+  color: var(--color-text-secondary);
+}
+
+@supports (corner-shape: squircle) {
+  .downloadCard {
+    border-radius: 60px;
+    corner-shape: squircle;
+  }
+}
+
+@container root style(--color-scheme: dark) {
+  .downloadCard {
+    border-color: var(--color-fill-3);
+    background: color-mix(in srgb, var(--color-fill-2) 70%, transparent);
+    box-shadow: inset 0 0 25px var(--color-fill-2);
+  }
+}
+
+@container root (width < 768px) {
+  .downloadGroup {
+    margin-top: 38px;
+  }
+
+  .downloadGroup h2 {
+    margin-bottom: 16px;
+    font-size: 25px;
+  }
+
+  .downloadGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .downloadCard {
+    min-height: 210px;
+    padding: 24px;
+  }
+}
+
+@container root (width < 480px) {
+  .downloadGrid {
+    width: calc(100% - 28px);
+  }
+}

@@ -16,6 +16,8 @@ export const THEME: "system" | "light" | "dark" = "system";
  * Example: "6502667826"
  */
 export const APP_ID = "6766563672";
+export const APP_STORE_URL = `https://apps.apple.com/app/id${APP_ID}`;
+export const WEB_APP_URL = "https://app.saver-app.com";
 
 /**
  * Custom fonts for 'whimsical' and 'cursive' font styles.
@@ -37,6 +39,7 @@ export const MATERIAL_SYMBOLS = [
   "lock",
   "target",
   "smartphone",
+  "language",
   "extension",
   "smart_toy",
   "menu",

@@ -2,9 +2,9 @@ import { CardGrid } from "@/components/card_grid/card_grid";
 import { DownloadActionButton } from "@/components/download_action_button/download_action_button";
 import { Hero } from "@/components/hero/hero";
 import { Section } from "@/components/section/section";
+import { WEB_APP_URL } from "@/constants";
 import styles from "./page.module.css";
 
-const APP_URL = "https://app.saver-app.com";
 const SCREENSHOTS = {
   tasks:
     "/assets/Simulator Screenshot - iPhone 17 Pro - 2026-07-16 at 14.58.01.png",
@@ -24,13 +24,14 @@ interface Plan {
   billing: string;
   features: readonly string[];
   action: string;
+  href: string;
   featured?: boolean;
 }
 
 const plans: readonly Plan[] = [
   {
     name: "Free",
-    description: "For unlimited local use on your mobile device.",
+    description: "For unlimited offline use in the mobile apps.",
     price: "€0",
     billing: "No account or subscription required",
     features: [
@@ -39,22 +40,24 @@ const plans: readonly Plan[] = [
       "Unlimited local habits",
       "Works without an internet connection",
     ],
-    action: "Start offline",
+    action: "Download Saver",
+    href: "/download",
   },
   {
     name: "Plus",
-    description: "For personal productivity across all your devices.",
+    description: "For personal productivity across mobile and the web.",
     price: "€3.99",
     priceSuffix: "/ month",
     billing: "or €39.99 billed yearly",
     features: [
-      "Sync across supported devices",
+      "Sync between the mobile and web apps",
       "6 spaces",
       "750 tasks and 300 bookmarks",
       "15 active habits",
       "5 collaborators across all spaces",
     ],
     action: "Choose Plus",
+    href: WEB_APP_URL,
     featured: true,
   },
   {
@@ -64,7 +67,7 @@ const plans: readonly Plan[] = [
     priceSuffix: "/ month",
     billing: "or €59.99 billed yearly",
     features: [
-      "Sync across supported devices",
+      "Sync between the mobile and web apps",
       "20 spaces",
       "3,000 tasks and 1,500 bookmarks",
       "50 active habits",
@@ -72,6 +75,7 @@ const plans: readonly Plan[] = [
       "Custom Discord bot branding",
     ],
     action: "Choose Pro",
+    href: WEB_APP_URL,
   },
 ];
 
@@ -80,8 +84,8 @@ export default function Page() {
     <>
       <Section paddingTop={100}>
         <Hero
-          title="Keep it all together."
-          subtitle="Tasks, bookmarks, habits, and shared spaces in one app, locally on mobile or synced when you need it."
+          title="Tasks, bookmarks, and habits. All together."
+          subtitle="Group them into spaces, collaborate with others, and stay in sync across mobile, web, Safari, Chrome, and Discord."
           media={
             <Hero.Image
               src={SCREENSHOTS.tasks}
@@ -90,12 +94,27 @@ export default function Page() {
             />
           }
           action={
-            <DownloadActionButton
-              href={APP_URL}
-              label="Open Saver"
-              size="medium"
-              showAppleLogo={false}
-            />
+            <>
+              <div className={styles.heroActions}>
+                <DownloadActionButton
+                  href={WEB_APP_URL}
+                  label="Open Web App"
+                  size="medium"
+                  showAppleLogo={false}
+                />
+                <DownloadActionButton
+                  href="#platforms"
+                  label="Explore All Platforms"
+                  size="medium"
+                  showAppleLogo={false}
+                  variant="secondary"
+                  openInNewTab={false}
+                />
+              </div>
+              <p className={styles.platformNote}>
+                Mobile apps work offline · web app needs no installation
+              </p>
+            </>
           }
         />
       </Section>
@@ -134,8 +153,8 @@ export default function Page() {
 
           <CardGrid.StackedCard
             maxWidth="full"
-            title="Unlimited spaces, even offline"
-            description="Keep Personal, Work, Travel Plans, and Home on your phone without an account or subscription."
+            title="Everything has its place"
+            description="Group related tasks, bookmarks, and habits into custom spaces. Create unlimited spaces locally on mobile, then sync the ones you need across Saver."
             media={
               <CardGrid.StackedCard.Image
                 src={SCREENSHOTS.spaces}
@@ -153,19 +172,21 @@ export default function Page() {
       <Section>
         <div className={styles.appInformation}>
           <div className={styles.appInformationCopy}>
-            <p className={styles.eyebrow}>Offline first</p>
-            <h2>Your mobile app works without a subscription.</h2>
+            <h2>Take Saver with you, even offline.</h2>
             <p>
               Create unlimited spaces, tasks, bookmarks, and habits locally on
-              your mobile device, even without an internet connection. You only
-              need a subscription when you want to sync your data.
+              your iPhone or Android device, even without an internet
+              connection. You only need a subscription when you want to sync
+              your data.
             </p>
           </div>
 
           <dl className={styles.appFacts}>
             <div>
               <dt>Unlimited locally</dt>
-              <dd>Your offline mobile content is not restricted by plan limits.</dd>
+              <dd>
+                Your offline mobile content is not restricted by plan limits.
+              </dd>
             </div>
             <div>
               <dt>No account needed</dt>
@@ -179,27 +200,34 @@ export default function Page() {
         </div>
       </Section>
 
-      <Section title="Saver beyond the mobile app">
+      <Section title="Choose how you use Saver" navigationAnchor="platforms">
         <CardGrid rowHeight={280}>
           <CardGrid.IconCard
-            maxWidth="third"
+            maxWidth="half"
             iconName="smartphone"
-            title="Mobile, even offline"
-            description="Use Saver locally with no account, no connection, and no item limits."
+            title="iPhone & Android apps"
+            description="Get Saver from the App Store or Google Play and use it locally with no account, connection, or item limits."
           />
 
           <CardGrid.IconCard
-            maxWidth="third"
+            maxWidth="half"
+            iconName="language"
+            title="Web app"
+            description="Open Saver in your browser on a computer or phone. Nothing needs to be installed."
+          />
+
+          <CardGrid.IconCard
+            maxWidth="half"
             iconName="extension"
-            title="Browser extensions"
-            description="Save from Safari or Chrome without leaving the page. Currently in development and not public yet."
+            title="Safari & Chrome extensions"
+            description="Save bookmarks from Safari or Chrome without leaving the page you are viewing."
           />
 
           <CardGrid.IconCard
-            maxWidth="third"
+            maxWidth="half"
             iconName="smart_toy"
             title="Discord bot"
-            description="Connect Saver with Discord and bring saved tasks and bookmarks into your community workflow."
+            description="Create, find, and share Saver tasks and bookmarks without leaving your Discord server."
           />
         </CardGrid>
       </Section>
@@ -239,9 +267,9 @@ export default function Page() {
 
               <a
                 className={styles.planAction}
-                href={APP_URL}
-                target="_blank"
-                rel="noreferrer"
+                href={plan.href}
+                target={plan.href.startsWith("http") ? "_blank" : undefined}
+                rel={plan.href.startsWith("http") ? "noreferrer" : undefined}
               >
                 {plan.action}
               </a>
@@ -250,26 +278,42 @@ export default function Page() {
         </div>
 
         <p className={styles.billingNote}>
-          <strong>Offline mobile use stays free and unlimited.</strong> A
-          subscription is only required when you want to sync your data, and the
-          listed limits apply to synced content. Plus and Pro renew automatically
-          until cancelled. Monthly plans are billed monthly and yearly plans
-          yearly. You can cancel at any time and keep access through the current
-          paid term. Applicable taxes and the final localized total are shown at
-          checkout. Eligible new users may see a seven day free trial at checkout.
+          <strong>
+            Offline use in the mobile apps stays free and unlimited.
+          </strong>{" "}
+          A subscription is only required when you want to sync your data, and
+          the listed limits apply to synced content. Plus and Pro renew
+          automatically until cancelled. Monthly plans are billed monthly and
+          yearly plans yearly. You can cancel at any time and keep access through
+          the current paid term. Applicable taxes and the final localized total
+          are shown at checkout. Eligible new users may see a seven day free trial
+          at checkout.
         </p>
       </Section>
 
       <Section paddingTop={60} paddingBottom={160}>
         <div className={styles.closingCallout}>
           <h2>Start with the next thing you want to keep.</h2>
-          <p>Use Saver offline for free, then subscribe whenever you want to sync.</p>
-          <DownloadActionButton
-            href={APP_URL}
-            label="Open Saver"
-            size="medium"
-            showAppleLogo={false}
-          />
+          <p>
+            Use Saver on mobile, in the web app, from Safari or Chrome, or inside
+            Discord.
+          </p>
+          <div className={styles.closingActions}>
+            <DownloadActionButton
+              href={WEB_APP_URL}
+              label="Open Web App"
+              size="medium"
+              showAppleLogo={false}
+            />
+            <DownloadActionButton
+              href="#platforms"
+              label="Explore All Platforms"
+              size="medium"
+              showAppleLogo={false}
+              variant="secondary"
+              openInNewTab={false}
+            />
+          </div>
         </div>
       </Section>
     </>

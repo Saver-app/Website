@@ -1,4 +1,4 @@
-import { APP_ID, IS_WAITLIST_ENABLED, THEME } from "@/constants";
+import { APP_ID, IS_WAITLIST_ENABLED, THEME, WEB_APP_URL } from "@/constants";
 import type { Metadata, Viewport } from "next";
 
 import { AppIcon } from "@/components/app_icon/app_icon";
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
    * Recommended length for title is max 60 characters.
    * Recommended length for description is max 160 characters.
    */
-  title: "Saver",
-  description: "Saver brings bookmarks, todos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
+  title: "Saver — Productivity everywhere you work",
+  description: "Organize tasks, bookmarks, habits, and shared spaces across iPhone, Android, web, Safari, Chrome, and Discord.",
 
   /**
    * Your website URL.
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
    * run the dev server and go to `http://localhost:3000/open-graph-builder`.
    */
   openGraph: {
-    title: "Saver: Tasks, Bookmarks and Habits",
-    description: "Saver brings bookmarks, todos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
+    title: "Saver: Productivity everywhere you work",
+    description: "Use Saver on iPhone, Android, web, Safari, Chrome, and Discord.",
     url: "https://saver-app.com",
     images: [
       {
@@ -51,8 +51,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Saver: Tasks, Bookmarks and Habits",
-    description: "Saver brings bookmarks, todos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
+    title: "Saver: Productivity everywhere you work",
+    description: "Use Saver on iPhone, Android, web, Safari, Chrome, and Discord.",
     images: ["/ogpreview20260718.png"],
   },
 };
@@ -89,12 +89,12 @@ export default function RootLayout({
                 icon={<AppIcon src="/app_view/saver_app_icon_dark.png" />}
                 appName="Saver"
                 links={[
-                  { label: "Download", href: "", external: true },
+                  { label: "Download", href: "/download" },
                   { label: "Features", href: "#features" },
                   { label: "Pricing", href: "#pricing" },
                 ]}
-                action={<DownloadActionButton label="Open Web App" href="https://app.saver-app.com" showAppleLogo={false} />}
-                actionHref="https://app.saver-app.com"
+                action={<DownloadActionButton label="Open Web App" href={WEB_APP_URL} showAppleLogo={false} />}
+                actionHref={WEB_APP_URL}
               />
 
               {children}
@@ -123,7 +123,9 @@ export default function RootLayout({
                 <MultiColumnFooter.Column
                   title="Saver"
                   links={[
-                    { label: "Download", href: "/download" },
+                    { label: "Web App", href: WEB_APP_URL, external: true },
+                    { label: "Mobile Apps", href: "/download#mobile" },
+                    { label: "Browser Extensions", href: "/download#extensions" },
                     { label: "Features", href: "#features" },
                     { label: "Pricing", href: "#pricing" },
                     { label: "Release Notes", href: "/release-notes" },

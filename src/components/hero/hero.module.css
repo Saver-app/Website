@@ -20,7 +20,7 @@
 	padding-bottom: 40px;
 
 	.title {
-		font-size: 66px;
+		font-size: 58px;
 		line-height: 1.03;
 		font-weight: 900;
 
@@ -85,7 +85,7 @@
 		text-align: center;
 
 		.title {
-			font-size: 52px;
+			font-size: 44px;
 
 			&.whimsical {
 				font-size: 72px;

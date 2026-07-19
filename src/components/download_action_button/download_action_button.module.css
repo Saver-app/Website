@@ -17,6 +17,17 @@
     transform: scale(0.97);
   }
 
+  &.secondary:link,
+  &.secondary:visited {
+    border: 1px solid var(--color-fill-3);
+    background-color: transparent;
+    color: var(--color-text-primary);
+  }
+
+  &.secondary:hover {
+    background-color: var(--color-fill-2);
+  }
+
   .label {
     position: relative;
     left: -2px;

@@ -1,3 +1,16 @@
+.heroActions,
+.closingActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.platformNote {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 .appInformation {
   width: calc(100% - 40px);
   display: grid;
@@ -12,15 +25,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.eyebrow {
-  margin-bottom: 14px;
-  color: var(--color-text-secondary);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  padding-bottom: 18px;
 }
 
 .appInformationCopy h2 {
@@ -257,6 +262,10 @@
   font-size: 18px;
 }
 
+.closingActions {
+  justify-content: center;
+}
+
 @supports (corner-shape: squircle) {
   .appInformation,
   .plan {
@@ -285,10 +294,18 @@
 }
 
 @container root (width < 768px) {
+  .heroActions {
+    justify-content: center;
+  }
+
   .appInformation {
     grid-template-columns: 1fr;
     gap: 40px;
     padding: 42px 30px;
+  }
+
+  .appInformationCopy {
+    padding-bottom: 0;
   }
 
   .appInformationCopy h2,
@@ -320,6 +337,12 @@
 }
 
 @container root (width < 480px) {
+  .heroActions,
+  .closingActions {
+    width: 100%;
+    flex-direction: column;
+  }
+
   .appInformation,
   .pricing {
     width: calc(100% - 28px);

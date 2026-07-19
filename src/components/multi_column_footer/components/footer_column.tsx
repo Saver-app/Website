@@ -11,7 +11,7 @@ export function FooterColumn({ title, links }: FooterColumnProps) {
       <div className={styles.title}>{title}</div>
       <ul className={styles.links}>
         {links.map((link) => (
-          <li key={link.href}>
+          <li key={`${link.label}-${link.href}`}>
             <a
               href={link.href}
               className={styles.link}
