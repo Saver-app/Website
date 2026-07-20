@@ -20,7 +20,7 @@ export const metadata: Metadata = {
    * Recommended length for title is max 60 characters.
    * Recommended length for description is max 160 characters.
    */
-  title: "Saver",
+  title: "Saver: Tasks, Bookmarks, and Habits in One Place",
   description: "Saver brings bookmarks, todos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
 
   /**
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
    * run the dev server and go to `http://localhost:3000/open-graph-builder`.
    */
   openGraph: {
-    title: "Saver",
+    title: "Saver: Tasks, Bookmarks, and Habits in One Place",
     description: "Saver brings bookmarks, todos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
     url: "https://saver-app.com",
     images: [
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Saver",
+    title: "Saver: Tasks, Bookmarks, and Habits in One Place",
     description: "Saver brings bookmarks, todos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
     images: ["/ogpreview20260718.png"],
   },
