@@ -158,7 +158,7 @@ export default function RootLayout({
                   links={[
                     { label: "GitHub", href: "https://github.com/Saver-app", external: true },
                     { label: "YouTube", href: "https://www.youtube.com/@saverapp", external: true },
-                    { label: "Instagram", href: "https://www.instagram.com/saver_app_official/", external: true },
+                    { label: "Instagram", href: "https://www.instagram.com/get.saver/", external: true },
                     { label: "Twitter", href: "https://x.com/SaverAppX", external: true },
                   ]}
                 />
