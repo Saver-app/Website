@@ -5,6 +5,7 @@ import { useState } from "react";
 import styles from "./contact_form.module.css";
 
 const SUPPORT_EMAIL = "support@saver-app.dev";
+const WHATSAPP_URL = "https://wa.me/message/JWNX7BB22E4UA1";
 const FORM_ENDPOINT = "https://api.web3forms.com/submit";
 const WEB3FORMS_ACCESS_KEY = "8975af3a-4d99-404d-bd52-5c826047bb3d";
 
@@ -159,8 +160,14 @@ export function ContactForm() {
       </form>
 
       <div className={styles.alternative}>
-        <p>Prefer email?</p>
-        <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+        <p>Contact us directly:</p>
+        <div className={styles.alternativeLinks}>
+          <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+          <span aria-hidden="true">·</span>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+        </div>
       </div>
     </div>
   );

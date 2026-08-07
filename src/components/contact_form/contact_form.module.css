@@ -179,7 +179,12 @@
   font-size: 15px;
 }
 
-.alternative a {
+.alternativeLinks {
+  display: flex;
+  gap: 6px;
+}
+
+.alternativeLinks a {
   color: var(--color-text-primary);
   font-weight: 600;
   text-decoration: underline;
