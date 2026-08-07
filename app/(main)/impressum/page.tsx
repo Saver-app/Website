@@ -3,7 +3,7 @@ export default function ImpressumPage() {
     <>
       <h1>Legal Notice</h1>
 
-      <h4>Information according to § 5 TMG</h4>
+      <h2>Information according to § 5 DDG</h2>
 
       <h3>Contact</h3>
       <p>
@@ -28,8 +28,15 @@ export default function ImpressumPage() {
         This Legal Notice is valid for the following websites and services:
       </p>
       <ul>
-        <li>https://saver-app.com/</li>
-        <li>https://app.saver-app.com/</li>
+        <li>
+          <a href="https://saver-app.com/">saver-app.com</a>
+        </li>
+        <li>
+          <a href="https://app.saver-app.com/">app.saver-app.com</a>
+        </li>
+        <li>Saver mobile and desktop apps</li>
+        <li>Saver browser extensions</li>
+        <li>The Saver Discord bot and account connection</li>
       </ul>
     </>
   );

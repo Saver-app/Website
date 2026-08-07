@@ -111,6 +111,7 @@ export function ContactForm() {
               <option>App support</option>
               <option>Account or sign-in</option>
               <option>Subscription or billing</option>
+              <option>Report illegal content or abuse</option>
               <option>Feedback or feature request</option>
               <option>Something else</option>
             </select>
@@ -130,8 +131,8 @@ export function ContactForm() {
 
         <div className={styles.formFooter}>
           <p className={styles.privacyNote}>
-            We will only use these details to respond to your request. See our{" "}
-            <a href="/privacy">Privacy Policy</a>.
+            Web3Forms delivers these details to Saver Support. We use them to
+            respond to your request. See our <a href="/privacy">Privacy Policy</a>.
           </p>
           <button
             className={styles.submitButton}

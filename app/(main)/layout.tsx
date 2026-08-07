@@ -112,7 +112,7 @@ export default function RootLayout({
                     {" · "}
                     <a href="/terms" style={{ textDecoration: "none", color: "inherit" }}>Terms</a>
                     {" · "}
-                    <a href="/return-policy" style={{ textDecoration: "none", color: "inherit" }}>Return Policy</a>
+                    <a href="/return-policy" style={{ textDecoration: "none", color: "inherit" }}>Refunds & Withdrawal</a>
                     {" · "}
                     <a href="/impressum" style={{ textDecoration: "none", color: "inherit" }}>Legal Notice</a>
                     {" · "}
@@ -126,8 +126,8 @@ export default function RootLayout({
                     { label: "Web App", href: WEB_APP_URL, external: true },
                     { label: "Mobile Apps", href: "/download#mobile" },
                     { label: "Browser Extensions", href: "/download#extensions" },
-                    { label: "Features", href: "#features" },
-                    { label: "Pricing", href: "#pricing" },
+                    { label: "Features", href: "/#features" },
+                    { label: "Pricing", href: "/#pricing" },
                     { label: "Release Notes", href: "/release-notes" },
                   ]}
                 />
@@ -150,7 +150,9 @@ export default function RootLayout({
                   links={[
                     { label: "Privacy Policy", href: "/privacy" },
                     { label: "Terms of Service", href: "/terms" },
-                    { label: "Return & Refund Policy", href: "/return-policy" },
+                    { label: "Refunds & Withdrawal", href: "/return-policy" },
+                    { label: "Personal Data Request", href: "/data-request" },
+                    { label: "Legal Notice", href: "/impressum" },
                   ]}
                 />
                 <MultiColumnFooter.Column
