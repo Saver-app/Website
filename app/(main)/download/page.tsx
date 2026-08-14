@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 
 import { Icon } from "@/components/icon/icon";
 import { Section } from "@/components/section/section";
-import { APP_STORE_URL, WEB_APP_URL } from "@/constants";
+import {
+  APP_STORE_URL,
+  SAFARI_EXTENSION_APP_STORE_URL,
+  WEB_APP_URL,
+} from "@/constants";
 import type { MATERIAL_SYMBOLS } from "@/constants";
 import styles from "./page.module.css";
 
@@ -39,7 +43,7 @@ const browserExtensions: readonly DownloadOption[] = [
     description: "Save bookmarks from Safari as you browse.",
     destination: "Open App Store",
     icon: "extension",
-    href: APP_STORE_URL,
+    href: SAFARI_EXTENSION_APP_STORE_URL,
   },
   {
     name: "Chrome extension",
