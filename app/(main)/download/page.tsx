@@ -46,6 +46,7 @@ const browserExtensions: readonly DownloadOption[] = [
     description: "Save bookmarks without leaving Chrome.",
     destination: "Available in the Chrome Web Store",
     icon: "extension",
+    href: "https://chromewebstore.google.com/detail/niippnpocnnlkdlmibpongjakhidfjhb?utm_source=item-share-cb",
   },
 ];
 
