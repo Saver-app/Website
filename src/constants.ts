@@ -17,6 +17,8 @@ export const THEME: "system" | "light" | "dark" = "system";
  */
 export const APP_ID = "6766563672";
 export const APP_STORE_URL = `https://apps.apple.com/app/id${APP_ID}`;
+export const APP_STORE_DEEP_LINK =
+  `itms-apps://itunes.apple.com/app/id${APP_ID}`;
 export const WEB_APP_URL = "https://app.saver-app.com";
 
 /**
