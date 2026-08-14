@@ -18,9 +18,10 @@
 	align-items: start;
 	justify-content: center;
 	padding-bottom: 40px;
+	transform: translateY(-112px);
 
 	.title {
-		font-size: 58px;
+		font-size: 40px;
 		line-height: 1.03;
 		font-weight: 900;
 
@@ -70,19 +71,23 @@
 
 @container root (width < 768px) {
 	.hero {
+		--media-min-height: 560px;
+
 		grid-template-columns: 1fr;
 		grid-template-rows: auto minmax(var(--media-min-height), auto);
 		grid-template-areas:
 			"content"
 			"video";
-		gap: 40px;
+		gap: 32px;
 		padding: 0 30px;
+		margin-bottom: 0;
 	}
 
 	.content {
 		padding: 0 20px;
 		align-items: center;
 		text-align: center;
+		transform: none;
 
 		.title {
 			font-size: 44px;
@@ -97,11 +102,15 @@
 		}
 
 		.subtitle {
-			font-size: 20px;
+			max-width: 390px;
+			font-size: 19px;
+			line-height: 1.2;
 		}
 
 		.action {
 			align-items: center;
+			margin-top: 26px;
+			gap: 12px;
 		}
 	}
 

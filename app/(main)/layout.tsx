@@ -3,11 +3,11 @@ import type { Metadata, Viewport } from "next";
 
 import { AppIcon } from "@/components/app_icon/app_icon";
 import { CompactFooter } from "@/components/compact_footer/compact_footer";
-import { DownloadActionButton } from "@/components/download_action_button/download_action_button";
 import { EmailForm } from "@/components/email_form/email_form";
 import { Hero } from "@/components/hero/hero";
 import { MaterialSymbolsLink } from "@/components/material_symbols_link/material_symbols_link";
 import { Navbar } from "@/components/navbar/navbar";
+import { PlatformActionButton } from "@/components/platform_action_button/platform_action_button";
 import { ThemeStyle } from "@/components/theme_style/theme_style";
 import "@/global.css";
 import { ThemeProvider } from "@/providers/theme_provider";
@@ -93,8 +93,7 @@ export default function RootLayout({
                   { label: "Features", href: "#features" },
                   { label: "Pricing", href: "#pricing" },
                 ]}
-                action={<DownloadActionButton label="Open Web App" href={WEB_APP_URL} showAppleLogo={false} />}
-                actionHref={WEB_APP_URL}
+                action={<PlatformActionButton />}
               />
 
               {children}

@@ -1,19 +1,16 @@
 import { CardGrid } from "@/components/card_grid/card_grid";
 import { DownloadActionButton } from "@/components/download_action_button/download_action_button";
 import { Hero } from "@/components/hero/hero";
+import { PlatformActionButton } from "@/components/platform_action_button/platform_action_button";
 import { Section } from "@/components/section/section";
 import { WEB_APP_URL } from "@/constants";
 import styles from "./page.module.css";
 
 const SCREENSHOTS = {
-  tasks:
-    "/assets/Simulator Screenshot - iPhone 17 Pro - 2026-07-16 at 14.58.01.png",
-  bookmarks:
-    "/assets/Simulator Screenshot - iPhone 17 Pro - 2026-07-16 at 14.58.16.png",
-  habits:
-    "/assets/Simulator Screenshot - iPhone 17 Pro - 2026-07-16 at 14.58.22.png",
-  spaces:
-    "/assets/Simulator Screenshot - iPhone 17 Pro - 2026-07-16 at 15.05.16.png",
+  tasks: "/assets/saver_tasks.png",
+  bookmarks: "/assets/saver_bookmarks.png",
+  habits: "/assets/saver_habits.png",
+  spaces: "/assets/saver_spaces.png",
 } as const;
 
 interface Plan {
@@ -84,24 +81,25 @@ export default function Page() {
     <>
       <Section paddingTop={100}>
         <Hero
-          title="Tasks, bookmarks, and habits. All together."
-          subtitle="Group them into spaces, collaborate with others, and stay in sync across mobile, web, Safari, Chrome, and Discord."
+          title={
+            <>
+              Tasks, bookmarks, and habits.
+              <br />
+              {"All\u00A0together."}
+            </>
+          }
+          subtitle="Organize them in spaces, collaborate, and stay in sync everywhere."
           media={
             <Hero.Image
               src={SCREENSHOTS.tasks}
-              bezel="iPhone 17 Black"
+              bezel="iPhone 17 Pro Silver"
               alt="Saver showing organized lists and tasks"
             />
           }
           action={
             <>
               <div className={styles.heroActions}>
-                <DownloadActionButton
-                  href={WEB_APP_URL}
-                  label="Open Web App"
-                  size="medium"
-                  showAppleLogo={false}
-                />
+                <PlatformActionButton size="medium" />
                 <DownloadActionButton
                   href="#platforms"
                   label="Explore All Platforms"
@@ -112,7 +110,7 @@ export default function Page() {
                 />
               </div>
               <p className={styles.platformNote}>
-                Mobile apps work offline · web app needs no installation
+                Free offline · no account needed
               </p>
             </>
           }
@@ -129,7 +127,7 @@ export default function Page() {
               <CardGrid.StackedCard.Image
                 src={SCREENSHOTS.bookmarks}
                 alt="Saver showing bookmark folders and saved links"
-                bezel="iPhone 17 Black"
+                bezel="iPhone 17 Pro Silver"
                 bezelCrop={{ edge: "bottom", croppedRatio: 0.18 }}
               />
             }
@@ -144,7 +142,7 @@ export default function Page() {
               <CardGrid.StackedCard.Image
                 src={SCREENSHOTS.habits}
                 alt="Saver showing weekly habit progress"
-                bezel="iPhone 17 Black"
+                bezel="iPhone 17 Pro Silver"
                 bezelCrop={{ edge: "bottom", croppedRatio: 0.18 }}
               />
             }
@@ -159,7 +157,7 @@ export default function Page() {
               <CardGrid.StackedCard.Image
                 src={SCREENSHOTS.spaces}
                 alt="Saver showing four offline spaces"
-                bezel="iPhone 17 Black"
+                bezel="iPhone 17 Pro Silver"
                 bezelCrop={{ edge: "bottom", croppedRatio: 0.12 }}
               />
             }
@@ -201,7 +199,7 @@ export default function Page() {
       </Section>
 
       <Section title="Choose how you use Saver" navigationAnchor="platforms">
-        <CardGrid rowHeight={280}>
+        <CardGrid rowHeight={280} mobileRowHeight={190}>
           <CardGrid.IconCard
             maxWidth="half"
             iconName="smartphone"
@@ -299,12 +297,7 @@ export default function Page() {
             Discord.
           </p>
           <div className={styles.closingActions}>
-            <DownloadActionButton
-              href={WEB_APP_URL}
-              label="Open Web App"
-              size="medium"
-              showAppleLogo={false}
-            />
+            <PlatformActionButton size="medium" />
             <DownloadActionButton
               href="#platforms"
               label="Explore All Platforms"

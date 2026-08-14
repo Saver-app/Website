@@ -5,7 +5,7 @@ import { HeroVideo } from "./components/hero_video/hero_video";
 import styles from "./hero.module.css";
 
 interface HeroProps {
-  title: string;
+  title: React.ReactNode;
   subtitle: string;
   titleFontStyle?: FontStyle;
   badges?: React.ReactNode;

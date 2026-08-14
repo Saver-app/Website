@@ -10,10 +10,9 @@ interface NavbarProps {
   appName: string;
   links?: { label: string; href: string; external?: boolean }[];
   action: React.ReactNode;
-  actionHref?: string;
 }
 
-export function Navbar({ icon, appName, links, action, actionHref }: NavbarProps) {
+export function Navbar({ icon, appName, links, action }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const closeMenu = () => setMobileMenuOpen(false);
@@ -101,11 +100,9 @@ export function Navbar({ icon, appName, links, action, actionHref }: NavbarProps
                 );
               })}
             </ul>
-            {actionHref && (
-              <a href={actionHref} className={styles.mobileMenuActionLink} onClick={closeMenu}>
-                Open Web App
-              </a>
-            )}
+            <div className={styles.mobileMenuAction} onClick={closeMenu}>
+              {action}
+            </div>
           </div>
         )}
       </div>

@@ -41,6 +41,8 @@
 
 @container cardGrid style(--layout: column) {
 	.gridCardItem {
+		height: var(--mobile-card-height);
+
 		&.third,
 		&.half,
 		&.twoThirds,

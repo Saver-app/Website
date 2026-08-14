@@ -1,7 +1,7 @@
 .section {
   width: 100%;
   max-width: var(--base-width);
-  padding: 20px 0;
+  padding: var(--section-padding-top, 20px) 0 var(--section-padding-bottom, 20px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,4 +29,15 @@
   width: 100%;
   margin-bottom: 32px;
   padding: 0 30px;
+}
+
+@container root (width < 768px) {
+  .section {
+    padding-top: min(var(--section-padding-top, 20px), 52px);
+    padding-bottom: min(var(--section-padding-bottom, 20px), 52px);
+  }
+
+  .section + .section {
+    margin-top: 48px;
+  }
 }
