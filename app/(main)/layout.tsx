@@ -92,6 +92,7 @@ export default function RootLayout({
                   { label: "Download", href: "/download" },
                   { label: "Features", href: "#features" },
                   { label: "Pricing", href: "#pricing" },
+                  { label: "Docs", href: "https://docs.saver-app.com", external: true },
                 ]}
                 action={<PlatformActionButton />}
               />
@@ -140,7 +141,7 @@ export default function RootLayout({
                   <MultiColumnFooter.Column
                     title="Community"
                     links={[
-                      { label: "Discord", href: "https://discord.gg/f7BGpQFSeF", external: true },
+                      { label: "Discord", href: "https://discord.com/invite/f7BGpQFSeF", external: true },
                     ]}
                   />
                 </MultiColumnFooter.Stack>
