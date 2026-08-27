@@ -19,6 +19,8 @@ export const APP_ID = "6766563672";
 export const APP_STORE_URL = `https://apps.apple.com/app/id${APP_ID}`;
 export const APP_STORE_DEEP_LINK =
   `itms-apps://itunes.apple.com/app/id${APP_ID}`;
+export const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.saverapp.paket";
 export const SAFARI_EXTENSION_APP_ID = "6771103161";
 export const SAFARI_EXTENSION_APP_STORE_URL =
   `https://apps.apple.com/app/id${SAFARI_EXTENSION_APP_ID}`;

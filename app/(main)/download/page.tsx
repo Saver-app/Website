@@ -4,6 +4,7 @@ import { Icon } from "@/components/icon/icon";
 import { Section } from "@/components/section/section";
 import {
   APP_STORE_URL,
+  PLAY_STORE_URL,
   SAFARI_EXTENSION_APP_STORE_URL,
   WEB_APP_URL,
 } from "@/constants";
@@ -34,6 +35,7 @@ const mobileApps: readonly DownloadOption[] = [
     description: "Use Saver offline on your Android phone or tablet.",
     destination: "Available on Google Play",
     icon: "smartphone",
+    href: PLAY_STORE_URL,
   },
 ];
 

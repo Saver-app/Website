@@ -6,6 +6,7 @@ import { DownloadActionButton } from "@/components/download_action_button/downlo
 import {
   APP_STORE_DEEP_LINK,
   APP_STORE_URL,
+  PLAY_STORE_URL,
   WEB_APP_URL,
 } from "@/constants";
 
@@ -72,11 +73,10 @@ export function PlatformActionButton({
   if (clientEnvironment.mobilePlatform === "android") {
     return (
       <DownloadActionButton
-        href="/download#mobile"
+        href={PLAY_STORE_URL}
         label="Download for Android"
         size={size}
         showAppleLogo={false}
-        openInNewTab={false}
       />
     );
   }
