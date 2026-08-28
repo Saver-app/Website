@@ -142,6 +142,8 @@ export default function RootLayout({
                     title="Community"
                     links={[
                       { label: "Discord", href: "https://discord.com/invite/f7BGpQFSeF", external: true },
+                      { label: "Patreon", href: "https://www.patreon.com/cw/saverapp", external: true },
+                      { label: "Reddit", href: "https://www.reddit.com/r/SaverApp/", external: true },
                     ]}
                   />
                 </MultiColumnFooter.Stack>
