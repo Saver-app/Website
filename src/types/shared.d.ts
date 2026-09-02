@@ -42,6 +42,7 @@ export type ThemeColorKey =
   | "fill-2"
   | "fill-3"
   | "accent-brand"
+  | "accent-gold"
   | "accent-orange"
   | "accent-green"
   | "accent-red"

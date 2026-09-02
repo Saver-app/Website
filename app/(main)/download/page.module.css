@@ -1,16 +1,14 @@
 .downloadPage {
-  width: 100%;
+  width: calc(100% - 40px);
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .downloadGroup {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 46px;
+  display: grid;
+  grid-template-columns: minmax(160px, 0.28fr) minmax(0, 1fr);
+  margin-top: 72px;
   scroll-margin-top: 100px;
 }
 
@@ -20,51 +18,62 @@
 
 .downloadGroup h2 {
   width: 100%;
-  margin-bottom: 20px;
-  padding: 0 30px;
-  font-size: 28px;
-  line-height: 1.2;
+  padding: 22px 28px 0 0;
+  color: var(--color-text-primary);
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
 }
 
 .downloadGrid {
-  width: calc(100% - 40px);
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--border-strong);
 }
 
 .downloadCard {
-  min-height: 225px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 26px;
-  border: 1px solid var(--color-fill-0);
-  border-radius: 35px;
-  background: color-mix(in srgb, var(--color-fill-0) 50%, transparent);
-  box-shadow: inset 0 0 25px var(--color-fill-0);
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border-strong);
 }
 
 .cardIcon {
-  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-accent-gold);
+}
+
+.cardIcon span {
+  font-size: 26px;
 }
 
 .cardCopy {
-  flex: 1;
-  margin-top: 18px;
+  min-width: 0;
 }
 
 .cardCopy h3 {
-  font-size: 22px;
-  line-height: 1.1;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.15;
 }
 
 .cardCopy p {
   max-width: 390px;
-  margin-top: 6px;
+  margin-top: 7px;
   color: var(--color-text-secondary);
-  font-size: 16px;
-  line-height: 1.4;
+  font-size: 15px;
+  font-weight: 450;
+  line-height: 1.45;
+  text-wrap: pretty;
 }
 
 .downloadLink,
@@ -73,20 +82,23 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
-  border-radius: 999px;
+  padding: 8px 18px;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-display);
   font-size: 15px;
-  font-weight: 750;
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
 }
 
 .downloadLink {
   background: var(--color-accent-brand);
   color: var(--color-text-accent-brand);
-  transition: transform 0.15s ease-in-out;
+  transition: opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
 
 .downloadLink:hover {
-  transform: scale(1.03);
+  opacity: 0.82;
 }
 
 .downloadLink:active {
@@ -94,48 +106,40 @@
 }
 
 .storeLabel {
-  border: 1px solid var(--color-fill-3);
+  border: 1px solid var(--border-hairline);
   color: var(--color-text-secondary);
-}
-
-@supports (corner-shape: squircle) {
-  .downloadCard {
-    border-radius: 60px;
-    corner-shape: squircle;
-  }
-}
-
-@container root style(--color-scheme: dark) {
-  .downloadCard {
-    border-color: var(--color-fill-3);
-    background: color-mix(in srgb, var(--color-fill-2) 70%, transparent);
-    box-shadow: inset 0 0 25px var(--color-fill-2);
-  }
 }
 
 @container root (width < 768px) {
   .downloadGroup {
-    margin-top: 38px;
+    grid-template-columns: 1fr;
+    margin-top: 48px;
   }
 
   .downloadGroup h2 {
-    margin-bottom: 16px;
-    font-size: 25px;
+    padding: 0 0 16px;
+    font-size: 14px;
   }
 
   .downloadGrid {
     grid-template-columns: 1fr;
-    gap: 16px;
   }
 
   .downloadCard {
-    min-height: 210px;
-    padding: 24px;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 14px 16px;
+    padding: 22px 0;
+  }
+
+  .downloadLink,
+  .storeLabel {
+    grid-column: 2;
+    justify-self: start;
   }
 }
 
 @container root (width < 480px) {
-  .downloadGrid {
-    width: calc(100% - 28px);
+  .downloadPage {
+    width: calc(100% - 24px);
   }
 }

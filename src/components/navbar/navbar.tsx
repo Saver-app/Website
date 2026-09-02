@@ -10,10 +10,22 @@ interface NavbarProps {
   appName: string;
   links?: { label: string; href: string; external?: boolean }[];
   action: React.ReactNode;
+  /*
+    A second action for the burger menu only. The compact bar has room for one
+    button, but the open menu can carry an alternative route into the app.
+  */
+  mobileAction?: React.ReactNode;
 }
 
-export function Navbar({ icon, appName, links, action }: NavbarProps) {
+export function Navbar({
+  icon,
+  appName,
+  links,
+  action,
+  mobileAction,
+}: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const closeMenu = () => setMobileMenuOpen(false);
 
@@ -30,12 +42,22 @@ export function Navbar({ icon, appName, links, action }: NavbarProps) {
     return () => mediaQuery.removeEventListener("change", handleMediaChange);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 12);
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isSolid = isScrolled || mobileMenuOpen;
+
   return (
     <>
       <div className={styles.spacer}></div>
       <div className={styles.navbarContainer}>
         <nav className={styles.navbar}>
-          <div className={styles.content}>
+          <div className={`${styles.content} ${isSolid ? styles.solid : ""}`}>
             <Link className={styles.appIdentity} href="/">
               <div className={styles.appIconContainer}>{icon}</div>
 
@@ -71,7 +93,7 @@ export function Navbar({ icon, appName, links, action }: NavbarProps) {
               <Icon
                 name={mobileMenuOpen ? "close" : "menu"}
                 filled
-                size="large"
+                size="medium"
               />
             </button>
           </div>
@@ -100,8 +122,9 @@ export function Navbar({ icon, appName, links, action }: NavbarProps) {
                 );
               })}
             </ul>
-            <div className={styles.mobileMenuAction} onClick={closeMenu}>
+            <div className={styles.mobileMenuActions} onClick={closeMenu}>
               {action}
+              {mobileAction}
             </div>
           </div>
         )}

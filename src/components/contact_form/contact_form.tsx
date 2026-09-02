@@ -147,7 +147,7 @@ export function ContactForm() {
         <div className={styles.status} aria-live="polite">
           {status === "success" && (
             <p className={styles.successMessage}>
-              Thanks — your message has been sent to Saver Support.
+              Thanks! Your message has been sent to Saver Support.
             </p>
           )}
           {status === "error" && (

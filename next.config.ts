@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export", // Enables static export
+  /* Keep Fast Refresh state separate from production builds. */
+  distDir: process.env.NODE_ENV === "development" ? ".next-dev" : ".next",
   images: { unoptimized: true },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   turbopack: {
@@ -32,6 +34,14 @@ const nextConfig: NextConfig = {
     },
   },
   devIndicators: false,
+  /* Dev server binds to 0.0.0.0, so allow /_next/* requests from private-network hosts. */
+  allowedDevOrigins: [
+    "127.0.0.1",
+    "192.168.*.*",
+    "10.*.*.*",
+    "172.*.*.*",
+    "*.local",
+  ],
 };
 
 const withMDX = createMDX({

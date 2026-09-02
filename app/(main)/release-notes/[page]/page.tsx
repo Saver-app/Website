@@ -5,6 +5,22 @@ import {
   readReleaseNotesPage,
   readTotalReleaseNotesPageCount,
 } from "@/lib/release_notes_helpers";
+import { createPageMetadata } from "@/lib/site_metadata";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ page: string }>;
+}): Promise<Metadata> {
+  const { page } = await params;
+
+  return createPageMetadata({
+    title: `Release Notes: Page ${page} | Saver`,
+    description: "See what is new, improved, and fixed in Saver.",
+    path: `/release-notes/${page}`,
+  });
+}
 
 export default async function ReleaseNotesPage({
   params,

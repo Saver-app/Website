@@ -1,8 +1,17 @@
-import { APP_ID, IS_WAITLIST_ENABLED, THEME, WEB_APP_URL } from "@/constants";
+import {
+  BODY_FONT,
+  DISPLAY_FONT,
+  DISPLAY_HEAVY_FONT,
+  IS_WAITLIST_ENABLED,
+  SITE_URL,
+  THEME,
+  WEB_APP_URL,
+} from "@/constants";
 import type { Metadata, Viewport } from "next";
 
 import { AppIcon } from "@/components/app_icon/app_icon";
 import { CompactFooter } from "@/components/compact_footer/compact_footer";
+import { DownloadActionButton } from "@/components/download_action_button/download_action_button";
 import { EmailForm } from "@/components/email_form/email_form";
 import { Hero } from "@/components/hero/hero";
 import { MaterialSymbolsLink } from "@/components/material_symbols_link/material_symbols_link";
@@ -13,49 +22,17 @@ import "@/global.css";
 import { ThemeProvider } from "@/providers/theme_provider";
 import { Section } from "@/components/section/section";
 import { MultiColumnFooter } from "@/components/multi_column_footer/multi_column_footer";
+import { createPageMetadata } from "@/lib/site_metadata";
 
-export const metadata: Metadata = {
-  /**
-   * `title` and `description` are visible in search results.
-   * Recommended length for title is max 60 characters.
-   * Recommended length for description is max 160 characters.
-   */
-  title: "Saver: Tasks, Bookmarks, and Habits in One Place",
-  description: "Saver brings bookmarks, todos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
-
-  /**
-   * Your website URL.
-   */
-  metadataBase: new URL("https://saver-app.com"),
-
-  /**
-   * Info inside `openGraph` and `twitter` is used to show rich previews
-   * on social media when someone shares a link to your website.
-   *
-   * AppView comes with a tool to help you generate an Open Graph image,
-   * run the dev server and go to `http://localhost:3000/open-graph-builder`.
-   */
-  openGraph: {
+export const metadata = {
+  metadataBase: new URL(SITE_URL),
+  ...createPageMetadata({
     title: "Saver: Tasks, Bookmarks, and Habits in One Place",
-    description: "Saver brings bookmarks, todos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
-    url: "https://saver-app.com",
-    images: [
-        {
-          url: "/ogpreview20260718.png",
-        width: 1200,
-        height: 630,
-        alt: "",
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Saver: Tasks, Bookmarks, and Habits in One Place",
-    description: "Saver brings bookmarks, todos, and habits into one simple, shared space. Create collaborative spaces, capture what matters as you find it, and stay seamlessly in sync across all your devices.",
-    images: ["/ogpreview20260718.png"],
-  },
-};
+    description:
+      "Keep bookmarks, tasks, and habits together in one space for a trip, a class, or a project, and send things in from your share sheet, browser, Discord, or reMarkable. Free offline, sync when you need it.",
+    path: "/",
+  }),
+} satisfies Metadata;
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -68,14 +45,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme={THEME}>
+    <html
+      lang="en"
+      data-theme={THEME}
+      className={`${BODY_FONT.variable} ${DISPLAY_FONT.variable} ${DISPLAY_HEAVY_FONT.variable}`}
+    >
       <head>
-        <title>Saver App</title>
-        {/* This makes Safari on iOS show the App Store download banner */}
-        {!IS_WAITLIST_ENABLED && (
-          <meta name="apple-itunes-app" content={`app-id=${APP_ID}`} />
-        )}
-
         <link rel="icon" href="/favicon.png" type="image/png" sizes="48x48" />
 
         <ThemeStyle />
@@ -86,15 +61,28 @@ export default function RootLayout({
           {!IS_WAITLIST_ENABLED && (
             <>
               <Navbar
-                icon={<AppIcon src="/app_view/saver_app_icon_dark.png" />}
+                icon={
+                  <AppIcon
+                    src="/app_view/saver_app_icon_dark_128.webp"
+                    size={36}
+                  />
+                }
                 appName="Saver"
                 links={[
                   { label: "Download", href: "/download" },
-                  { label: "Features", href: "#features" },
+                  { label: "Capture", href: "#capture" },
                   { label: "Pricing", href: "#pricing" },
                   { label: "Docs", href: "https://docs.saver-app.com", external: true },
                 ]}
                 action={<PlatformActionButton />}
+                mobileAction={
+                  <DownloadActionButton
+                    href={WEB_APP_URL}
+                    label="Open web app"
+                    showAppleLogo={false}
+                    variant="secondary"
+                  />
+                }
               />
 
               {children}
@@ -104,7 +92,19 @@ export default function RootLayout({
                 in case you need more space for links.
               */}
               <MultiColumnFooter
-                appIcon={<AppIcon src="/app_view/saver_app_icon_white.png" size={48} mask={true} />}
+                appIcon={
+                  <AppIcon
+                    src="/app_view/saver_app_icon_dark_128.webp"
+                    size={44}
+                  />
+                }
+                tagline={
+                  <>
+                    Keep bookmarks, tasks, and habits in one space, and save to
+                    it from wherever you are. Free and offline on mobile, then
+                    sync when you need to.
+                  </>
+                }
                 footnoteLeading={<span>© 2026 Paul Gerling. All rights reserved.</span>}
                 footnoteTrailing={
                   <span>
@@ -126,7 +126,7 @@ export default function RootLayout({
                     { label: "Web App", href: WEB_APP_URL, external: true },
                     { label: "Mobile Apps", href: "/download#mobile" },
                     { label: "Browser Extensions", href: "/download#extensions" },
-                    { label: "Features", href: "/#features" },
+                    { label: "Capture", href: "/#capture" },
                     { label: "Pricing", href: "/#pricing" },
                     { label: "Release Notes", href: "/release-notes" },
                   ]}
@@ -174,7 +174,7 @@ export default function RootLayout({
             <Section paddingTop={60}>
               <Hero
                 title="Saver"
-                subtitle="Save all you need in one place and access it from any device, anytime."
+                subtitle="Keep your bookmarks, tasks, and habits together wherever you use Saver."
                 media={
                   <Hero.Image
                     src="/app_view/screenshot_placeholder.png"

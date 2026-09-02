@@ -1,350 +1,1212 @@
-.heroActions,
-.closingActions {
+/* Hero */
+
+/*
+  The title is two sentences. Once the hero stacks, the line box is short
+  enough that a greedy wrap pulls "One" up next to "and habits." and the two
+  sentences read as one run-on, so each sentence takes its own line box there.
+*/
+.heroTitleSentence {
+  display: inline;
+}
+
+.heroActionStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.heroNote {
+  margin-top: 14px;
+  color: rgb(250 250 247 / 0.58);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.desktopOnlyAction {
+  display: contents;
+}
+
+.mobileOnlyAction {
+  display: none;
+}
+
+.heroProductPreview {
+  width: 260px;
+  height: 520px;
+}
+
+.heroActions > a:link,
+.heroActions > a:visited,
+.heroActions .desktopOnlyAction > a:link,
+.heroActions .desktopOnlyAction > a:visited {
+  border-radius: var(--radius-sm);
+}
+
+.heroActions > a:first-child:link,
+.heroActions > a:first-child:visited {
+  color: var(--surface-dark);
+  background: #fafaf7;
+}
+
+.heroActions .desktopOnlyAction > a:link,
+.heroActions .desktopOnlyAction > a:visited {
+  color: #fafaf7;
+  background: rgb(255 255 255 / 0.08);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.24);
+}
+
+.heroActions > a:first-child:hover,
+.heroActions .desktopOnlyAction > a:hover {
+  opacity: 1;
+  filter: brightness(0.9);
+}
+
+/* Capture */
+
+/*
+  Three feature phones used to sit here, one per content type, which argued
+  against the one-space idea by showing tasks, bookmarks and habits as three
+  separate products side by side. The slot now carries the half of the promise
+  the page never stated: many ways in, one destination.
+
+  The rows are a two-column definition list on purpose. The clay panel above
+  already stacks heading-over-paragraph and the platform columns below already
+  lead with icon tiles, so a third variant of either molecule is exactly what
+  makes a page read as generated. No icons here for the same reason.
+*/
+.captureGrid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) minmax(272px, 0.52fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.captureColumn {
+  min-width: 0;
+}
+
+.captureRoutes {
+  min-width: 0;
+  margin: 0;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.captureRoute {
+  display: grid;
+  grid-template-columns: minmax(0, 206px) minmax(0, 1fr);
+  gap: 6px 28px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.captureRoute dt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-heavy);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.024em;
+  line-height: 1.25;
+}
+
+/* Same tile as .platformIcon, one step smaller to sit inside a text row. */
+.captureRouteIcon {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-xs);
+  background: var(--panel-card);
+  color: var(--color-text-primary);
+}
+
+.captureRoute dd {
+  margin: 0;
+  color: color-mix(in srgb, var(--color-text-primary) 74%, transparent);
+  font-size: 15px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* One quiet row instead of two more full-weight ones. */
+.captureAlso {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  align-items: center;
+  gap: 8px 18px;
+  margin-top: 18px;
 }
 
-.platformNote {
+.captureAlsoLabel {
   color: var(--color-text-secondary);
   font-size: 13px;
-  line-height: 1.4;
+  letter-spacing: 0.01em;
 }
 
-.appInformation {
-  width: calc(100% - 40px);
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
-  gap: 72px;
-  padding: 64px;
-  border-radius: 35px;
-  background: var(--color-fill-2);
+.captureAlsoItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
 }
 
-.appInformationCopy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-bottom: 18px;
-}
-
-.appInformationCopy h2 {
-  max-width: 480px;
-  font-size: 42px;
-  font-weight: 850;
-  letter-spacing: -0.035em;
-  line-height: 1.03;
-}
-
-.appInformationCopy > p:last-child {
-  max-width: 530px;
-  margin-top: 20px;
+.captureAlsoIcon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
   color: var(--color-text-secondary);
-  font-size: 18px;
-  line-height: 1.45;
 }
 
-.appFacts {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.captureAlsoItem strong {
+  font-weight: 700;
 }
 
-.appFacts > div {
-  padding: 22px 0;
-  border-bottom: 1px solid var(--color-fill-3);
+.captureAlsoItem > span:last-child {
+  color: var(--color-text-secondary);
 }
 
-.appFacts > div:first-child {
-  padding-top: 0;
+.captureNote {
+  max-width: 500px;
+  margin-top: 26px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.55;
+  text-wrap: pretty;
 }
 
-.appFacts > div:last-child {
-  padding-bottom: 0;
-  border-bottom: 0;
+/*
+  Mirrors the spaces panel deliberately: media on the right instead of the
+  left, so the two product shots read as a pair rather than as the same layout
+  twice. The field is clay rather than the clay-deep used there - one tone
+  apart, and warm enough that the screenshot's own off-white does not sink into
+  it the way it did on the neutral mist.
+*/
+.captureMedia {
+  position: relative;
+  align-self: stretch;
+  min-width: 0;
+  min-height: 452px;
+  overflow: clip;
+  border-radius: var(--radius-xl);
+  background: var(--panel-clay);
 }
 
-.appFacts dt {
-  font-size: 17px;
-  font-weight: 750;
+.capturePhones {
+  position: absolute;
+  inset: 0;
+  width: min(100%, 440px);
+  margin: 0 auto;
 }
 
-.appFacts dd {
-  margin-top: 5px;
+.capturePhone {
+  position: absolute;
+  bottom: -40px;
+  width: 210px;
+  height: 430px;
+  transform-origin: bottom center;
+}
+
+.capturePhoneShare {
+  left: 12px;
+  transform: rotate(-2deg);
+}
+
+.capturePhoneSave {
+  right: 12px;
+  z-index: 2;
+  transform: translateY(16px) rotate(2deg);
+}
+
+/* Full-bleed panel bands */
+
+.band {
+  width: var(--content-width);
+  margin-top: var(--panel-inset);
+  margin-right: auto;
+  margin-left: auto;
+  scroll-margin-top: 100px;
+}
+
+/* Spaces workflow */
+
+.spaceStory {
+  width: var(--content-width);
+  margin: 88px auto 0;
+  padding: 52px 44px 44px;
+  overflow: clip;
+  border-radius: var(--panel-radius);
+  background: var(--panel-clay);
+
+  /*
+    The site-wide secondary grey is neutral and goes hazy on a yellow field.
+    A tint of the ink keeps the warmth and holds contrast in both themes.
+  */
+  --color-text-secondary: color-mix(
+    in srgb,
+    var(--color-text-primary) 66%,
+    transparent
+  );
+}
+
+.spaceStoryHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  margin: 0 0 36px;
+  gap: 0 40px;
+  text-align: left;
+}
+.spaceStoryHeader h2 {
+  grid-column: 1 / -1;
+}
+.spaceStoryHeader > p {
+  grid-column: 1;
+}
+.spaceStoryHeader .spaceLink {
+  grid-column: 2;
+  justify-self: end;
+  margin-top: 0;
+}
+
+.spaceStoryHeader h2 {
+  max-width: 680px;
+  font-family: var(--font-heavy);
+  font-size: clamp(32px, 3.4cqw, 42px);
+  font-weight: 700;
+  letter-spacing: -0.038em;
+  line-height: 1.02;
+}
+
+.spaceStoryHeader > p {
+  max-width: 560px;
+  margin-top: 16px;
   color: var(--color-text-secondary);
   font-size: 15px;
-  line-height: 1.4;
+  line-height: 1.55;
+  text-wrap: pretty;
 }
 
-.pricing {
-  width: calc(100% - 40px);
+.spaceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  color: var(--color-text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.spaceLink span {
+  text-decoration: none;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.spaceLink:hover {
+  opacity: 0.62;
+}
+
+.spaceLink:hover span {
+  transform: translateX(3px);
+}
+
+/*
+  Craft and Square both let the product shot be one large flush object with the
+  copy as plain text beside it. This was a bento of three white cards, each led
+  by the same tinted icon chip and closed by a mocked-up status tile; the
+  repetition was what made it read as a template. The cards are gone and the
+  clay panel is now the only container. The image field is clay-deep, one tone
+  down in the same family, so it frames the phone without introducing a third
+  colour.
+*/
+.spaceGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(300px, 1fr);
+  gap: 44px;
+}
+.spaceStoryMedia {
+  position: relative;
+  min-width: 0;
+  min-height: 486px;
+  overflow: clip;
+  border-radius: var(--radius-xl);
+  background: var(--panel-clay-deep);
+}
+/*
+  One centred phone left the field wide open on both sides and ended well above
+  the panel edge. Two overlapping phones fill the same field, and the switcher
+  takes the inner edge so it sits next to the note it illustrates.
+*/
+.spaceStoryPhones {
+  position: absolute;
+  inset: 0;
+  width: min(100%, 418px);
+  margin: 0 auto;
+}
+.spaceStoryPhone {
+  position: absolute;
+  bottom: -52px;
+  transform-origin: bottom center;
+}
+.spaceStoryPhoneSwitcher {
+  right: 0;
+  z-index: 2;
+  width: 240px;
+  height: 492px;
+}
+.spaceStoryPhoneSpace {
+  left: 0;
+  width: 218px;
+  height: 447px;
+  transform: translateY(-38px) rotate(-2.5deg);
+}
+.spaceNotes {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4px 0 8px;
+}
+.spaceNote + .spaceNote {
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border-hairline);
+}
+.spaceNote h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-heavy);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+/* Same tile as .captureRouteIcon, so both sections speak one icon language. */
+.spaceNoteIcon {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-xs);
+  background: var(--panel-card);
+  color: var(--color-text-primary);
+}
+/* Hangs the body under the title rather than under the tile. */
+.spaceNote > p,
+.spaceContents {
+  padding-left: 42px;
+}
+.spaceNote > p {
+  max-width: 462px;
+  margin-top: 9px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+/*
+  The row the screenshot is showing. Tinting it in the same clay as the image
+  field pairs the two without bringing back the three-card bento.
+*/
+.spaceNoteLead {
+  margin: 0 -22px;
+  padding: 20px 22px 22px;
+  border-radius: var(--radius-lg);
+  background: var(--panel-clay-deep);
+}
+/* The lead note sets up the two below it, so it carries the larger type. */
+.spaceNoteLead h3 {
+  font-size: 25px;
+}
+.spaceNoteLead > p {
+  font-size: 15px;
+}
+/*
+  These were filled pills in a 2x2 grid, which repeated the icon-chip motif a
+  fourth time. Inline runs read as a sentence instead of another component.
+*/
+.spaceContents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 18px;
+  list-style: none;
+}
+.spaceContents li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.spaceContents li > span:first-child {
+  flex: none;
+  color: var(--color-accent-gold);
+}
+
+/* Shared editorial section header */
+
+.editorialHeader {
+  width: 100%;
+  max-width: 720px;
+  align-self: flex-start;
+  margin: 0 0 64px;
+  padding: 0;
+  text-align: left;
+}
+
+.editorialHeader h2 {
+  max-width: 720px;
+  font-family: var(--font-heavy);
+  font-size: clamp(34px, 4cqw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.034em;
+  line-height: 1.05;
+}
+
+.editorialHeader > p:last-child {
+  max-width: 580px;
+  margin: 20px 0 0;
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+/*
+  Sits in a column rather than across the section, so it needs less air beneath
+  it than a header with the full grid below it.
+*/
+.captureHeader {
+  margin-bottom: 48px;
+}
+
+/* Platforms */
+
+.platformList {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  gap: 44px 24px;
+  list-style: none;
+}
+
+.platformItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.platformLink {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  border-radius: var(--radius-sm);
+  color: inherit;
+  text-decoration: none;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.platformLink:hover {
+  opacity: 0.62;
+}
+
+.platformLink:focus-visible {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 6px;
+}
+
+.platformIcons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.platformIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-xs);
+  background: var(--panel-card);
+  color: var(--color-text-primary);
+}
+
+.platformCopy h3 {
+  margin-top: 24px;
+  font-family: var(--font-heavy);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.024em;
+  line-height: 1.15;
+}
+
+.platformCopy p {
+  margin-top: 8px;
+  color: color-mix(in srgb, var(--color-text-primary) 74%, transparent);
+  font-size: 14px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.mobilePlatformNote {
+  display: none;
+}
+
+/* Pricing */
+
+.pricing {
+  --feature-bg: var(--surface-dark);
+  --feature-text: var(--surface-dark-text);
+  --feature-muted: var(--surface-dark-muted);
+  --feature-hairline: rgb(255 255 255 / 0.16);
+
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-items: start;
 }
 
 .plan {
-  min-height: 660px;
   display: flex;
   flex-direction: column;
-  padding: 38px 32px 30px;
-  border: 1px solid var(--color-fill-0);
-  border-radius: 35px;
-  background: color-mix(in srgb, var(--color-fill-0) 50%, transparent);
-  box-shadow: inset 0 0 25px var(--color-fill-0);
+  padding: 32px 28px 30px;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-sm);
+  background: var(--panel-card);
 }
 
 .featuredPlan {
-  background: var(--color-fill-2);
+  border-color: transparent;
+  background: var(--feature-bg);
+  color: var(--feature-text);
 }
 
 .planName {
   display: flex;
-  min-height: 28px;
+  min-height: 30px;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
 
 .planName h3 {
-  font-size: 29px;
+  font-family: var(--font-heavy);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   line-height: 1;
 }
 
 .planName span {
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: var(--color-accent-brand);
-  color: var(--color-text-accent-brand);
-  font-size: 11px;
-  font-weight: 750;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  padding: 5px 9px;
+  border: 1px solid color-mix(in srgb, var(--feature-text) 16%, transparent);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--feature-text) 10%, transparent);
+  color: var(--feature-text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
 }
 
 .planDescription {
-  min-height: 76px;
-  margin-top: 24px;
+  min-height: 66px;
+  margin-top: 16px;
   color: var(--color-text-secondary);
-  font-size: 17px;
-  font-weight: 550;
-  line-height: 1.4;
+  font-size: 14px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.featuredPlan .planDescription {
+  color: var(--feature-muted);
+}
+
+.planPrice {
+  min-height: 84px;
+  margin-top: 20px;
 }
 
 .planPrice p {
   display: flex;
   align-items: baseline;
-  gap: 5px;
+  gap: 6px;
   white-space: nowrap;
 }
 
 .planPrice strong {
+  font-family: var(--font-heavy);
   font-size: 44px;
-  letter-spacing: -0.03em;
+  font-weight: 700;
+  letter-spacing: -0.038em;
   line-height: 1;
 }
 
 .planPrice span,
 .planPrice small {
   color: var(--color-text-secondary);
-  font-size: 15px;
+  font-size: 14px;
+}
+
+.featuredPlan .planPrice span,
+.featuredPlan .planPrice small {
+  color: var(--feature-muted);
 }
 
 .planPrice small {
   display: block;
-  margin-top: 7px;
+  margin-top: 8px;
   line-height: 1.3;
 }
 
-.planPrice {
-  min-height: 86px;
-  margin-top: 28px;
+.planPrice .planSaving {
+  display: inline-flex;
+  margin-left: 7px;
+  padding: 3px 7px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-muted);
+  color: var(--color-text-primary);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.featuredPlan .planPrice .planSaving {
+  background: rgb(255 255 255 / 0.12);
+  color: var(--feature-text);
+}
+
+.planAction {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-xs);
+  background: var(--color-accent-brand);
+  color: var(--color-text-accent-brand);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  text-align: center;
+  transition: transform var(--duration-fast) var(--ease-out),
+    opacity var(--duration) var(--ease-out);
+}
+
+.planAction:hover {
+  opacity: 0.86;
+}
+
+.planAction:active {
+  transform: scale(0.98);
+}
+
+.featuredPlan .planAction {
+  background: var(--feature-text);
+  color: var(--feature-bg);
 }
 
 .planDetails {
   display: flex;
   flex: 1;
   flex-direction: column;
-  margin-top: 34px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.featuredPlan .planDetails {
+  border-top-color: var(--feature-hairline);
+}
+
+.planFeatureIntro {
+  margin-bottom: 14px;
+  color: var(--color-text-primary);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.featuredPlan .planFeatureIntro {
+  color: var(--feature-text);
 }
 
 .planDetails ul {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 13px;
   color: var(--color-text-secondary);
-  font-size: 16px;
-  font-weight: 550;
-  line-height: 1.4;
+  font-size: 14px;
+  line-height: 1.45;
   list-style: none;
 }
 
+.featuredPlan .planDetails ul {
+  color: var(--feature-muted);
+}
+
 .planDetails li {
-  position: relative;
-  padding-left: 26px;
-}
-
-.planDetails li::before {
-  position: absolute;
-  left: 0;
-  top: -1px;
-  content: "✓";
-  color: var(--color-accent-blue);
-  font-weight: 900;
-}
-
-.planAction {
   display: flex;
-  min-height: 50px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--color-fill-3);
-  border-radius: 999px;
-  padding: 9px 15px;
-  font-size: 16px;
-  font-weight: 750;
-  text-align: center;
-  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out;
-  margin-top: 36px;
+  align-items: start;
+  gap: 10px;
 }
 
-.featuredPlan .planAction {
-  border-color: var(--color-accent-brand);
-  background: var(--color-accent-brand);
-  color: var(--color-text-accent-brand);
+.planDetails li > span:first-child {
+  flex: none;
+  margin-top: 1px;
+  color: color-mix(in srgb, var(--color-text-primary) 45%, transparent);
 }
 
-.planAction:hover {
-  transform: scale(1.03);
-  background: var(--color-fill-2);
-}
-
-.featuredPlan .planAction:hover {
-  background: var(--color-accent-brand);
-}
-
-.planAction:active {
-  transform: scale(0.97);
+.featuredPlan .planDetails li > span:first-child {
+  color: var(--feature-muted);
 }
 
 .billingNote {
-  width: calc(100% - 80px);
-  margin-top: 20px;
+  width: 100%;
+  margin-top: 30px;
   color: var(--color-text-secondary);
   font-size: 13px;
-  line-height: 1.45;
+  line-height: 1.6;
   text-align: center;
 }
 
-.billingNote strong {
+.billingNote a {
   color: var(--color-text-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-.closingCallout {
-  display: flex;
-  max-width: 660px;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 30px;
-  text-align: center;
+/* Closing call to action */
+
+.closingBand {
+  margin-top: 120px;
 }
 
-.closingCallout h2 {
-  font-size: 42px;
-  font-weight: 850;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
+.closingPanel {
+  position: relative;
+  padding: 76px 64px;
+  border-radius: var(--panel-radius);
+  background: var(--surface-dark);
+  color: var(--surface-dark-text);
+  text-align: left;
 }
 
-.closingCallout p {
-  margin: 16px 0 28px;
-  color: var(--color-text-secondary);
-  font-size: 18px;
+.closingPanel h2 {
+  max-width: 720px;
+  margin: 0;
+  font-family: var(--font-heavy);
+  font-size: clamp(38px, 4.8cqw, 60px);
+  font-weight: 700;
+  letter-spacing: -0.036em;
+  line-height: 1.04;
+}
+
+.closingBody {
+  max-width: 500px;
+  margin: 20px 0 0;
+  color: rgb(255 255 255 / 0.64);
+  font-size: 17px;
+  line-height: 1.55;
+  text-wrap: pretty;
 }
 
 .closingActions {
-  justify-content: center;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 34px;
 }
 
-@supports (corner-shape: squircle) {
-  .appInformation,
-  .plan {
-    border-radius: 60px;
-    corner-shape: squircle;
-  }
+.closingPanel .closingActions > a:link,
+.closingPanel .closingActions > a:visited,
+.closingPanel .desktopOnlyAction > a:link,
+.closingPanel .desktopOnlyAction > a:visited {
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  background-image: none;
+  color: var(--surface-dark);
+  box-shadow: none;
+}
+
+.closingPanel .desktopOnlyAction > a:link,
+.closingPanel .desktopOnlyAction > a:visited {
+  border: 1px solid rgb(255 255 255 / 0.28);
+  background: transparent;
+  color: #ffffff;
 }
 
 @container root style(--color-scheme: dark) {
-  .plan {
-    border-color: var(--color-fill-3);
-    background: color-mix(in srgb, var(--color-fill-2) 70%, transparent);
-    box-shadow: inset 0 0 25px var(--color-fill-2);
+  .pricing {
+    --feature-bg: #f4f3ef;
+    --feature-text: var(--surface-dark);
+    --feature-muted: color-mix(in srgb, var(--surface-dark) 64%, transparent);
+    --feature-hairline: color-mix(in srgb, var(--surface-dark) 14%, transparent);
   }
 
-  .featuredPlan {
-    background: var(--color-fill-3);
+  .featuredPlan .planDescription,
+  .featuredPlan .planPrice span,
+  .featuredPlan .planPrice small,
+  .featuredPlan .planDetails ul {
+    color: var(--feature-muted);
+  }
+}
+
+@container root (width < 1000px) {
+  .heroProductPreview {
+    width: 225px;
+    height: 450px;
   }
 }
 
 @container root (width < 900px) {
-  .appInformation {
-    gap: 48px;
-    padding: 52px;
-  }
-}
-
-@container root (width < 768px) {
-  .heroActions {
-    justify-content: center;
+  .spaceStory {
+    padding: 46px 28px 30px;
   }
 
-  .appInformation {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 42px 30px;
-  }
-
-  .appInformationCopy {
-    padding-bottom: 0;
-  }
-
-  .appInformationCopy h2,
-  .closingCallout h2 {
-    font-size: 34px;
-  }
-
-  .appInformationCopy > p:last-child {
-    font-size: 17px;
-  }
-
-  .pricing {
+  .spaceGrid {
     grid-template-columns: 1fr;
     gap: 30px;
   }
 
-  .plan {
-    min-height: auto;
-    padding: 30px;
+  /* The field runs the full width once stacked, so the phones grow with it. */
+  .spaceStoryMedia {
+    min-height: 470px;
   }
 
-  .planDescription {
+  .spaceStoryPhones {
+    width: min(100%, 440px);
+  }
+
+  .spaceStoryPhone {
+    bottom: -48px;
+  }
+
+  .spaceStoryPhoneSwitcher {
+    width: 248px;
+    height: 508px;
+  }
+
+  .spaceStoryPhoneSpace {
+    width: 226px;
+    height: 463px;
+    transform: translateY(-36px) rotate(-2.5deg);
+  }
+
+  /* Full-width rows, so the body tracks the section intro instead of a column. */
+  .spaceNote > p {
+    max-width: 560px;
+  }
+
+  .spaceNoteLead {
+    margin: 0 -16px;
+    padding: 18px 16px 20px;
+  }
+
+  .captureGrid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .captureMedia {
+    min-height: 396px;
+  }
+
+  .capturePhone {
+    bottom: -38px;
+    width: 188px;
+    height: 386px;
+  }
+
+  .platformList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pricing {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+}
+
+/* Matches the breakpoint where the hero itself drops to a single column. */
+@container root (width < 821px) {
+  .heroTitleSentence {
+    display: block;
+    /* Greedy inside a sentence, but never leave the last word on its own. */
+    text-wrap: pretty;
+  }
+
+  /*
+    The stacked hero gives the media a 300px row, so the phone has to come
+    down to that height here rather than at 768px - in between it was still
+    450px tall, centred in the short row, and overlapped the copy above it.
+  */
+  .heroProductPreview {
+    width: 150px;
+    height: 300px;
+  }
+}
+
+@container root (width < 768px) {
+  .heroActionStack,
+  .heroActions {
+    width: 100%;
+  }
+
+  .heroActions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .desktopOnlyAction {
+    display: none;
+  }
+
+  .mobileOnlyAction {
+    display: contents;
+  }
+
+  .heroActions > a:link,
+  .heroActions > a:visited,
+  .heroActions .mobileOnlyAction > a:link,
+  .heroActions .mobileOnlyAction > a:visited {
+    width: 100%;
+    min-height: 44px;
+    padding: 8px 18px;
+    text-align: center;
+  }
+
+  .heroNote {
+    margin-top: 10px;
+    color: rgb(250 250 247 / 0.64);
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .heroActions .mobileOnlyAction > a:link,
+  .heroActions .mobileOnlyAction > a:visited {
+    color: #fafaf7;
+    background: rgb(255 255 255 / 0.08);
+    box-shadow: 0 0 0 1px rgb(255 255 255 / 0.24);
+  }
+
+  .band {
+    width: var(--content-width);
+  }
+
+  .spaceStory {
+    width: var(--content-width);
+    margin-top: 52px;
+    padding: 34px 18px 24px;
+    border-radius: 16px;
+  }
+
+  .spaceStoryHeader {
+    margin-bottom: 26px;
+    grid-template-columns: 1fr;
+  }
+
+  .spaceStoryHeader .spaceLink {
+    grid-column: 1;
+    justify-self: start;
+    margin-top: 16px;
+  }
+
+  .spaceStoryHeader h2 {
+    font-size: clamp(27px, 7.6cqw, 34px);
+  }
+
+  .spaceStoryHeader > p {
+    font-size: 14px;
+  }
+
+  .spaceGrid {
+    gap: 26px;
+  }
+
+  .spaceStoryMedia {
+    min-height: 330px;
+  }
+
+  .spaceStoryPhones {
+    width: min(100%, 296px);
+  }
+
+  .spaceStoryPhone {
+    bottom: -36px;
+  }
+
+  .spaceStoryPhoneSwitcher {
+    width: 168px;
+    height: 345px;
+  }
+
+  .spaceStoryPhoneSpace {
+    width: 152px;
+    height: 312px;
+    transform: translateY(-26px) rotate(-2.5deg);
+  }
+
+  .captureRoute {
+    grid-template-columns: 1fr;
+    gap: 5px;
+    align-items: start;
+    padding: 15px 0;
+  }
+
+  .captureRoute dt {
+    font-size: 16px;
+  }
+
+  .captureRoute dd {
+    /* Keeps the description hanging under the title, clear of the icon tile. */
+    padding-left: 42px;
+    font-size: 14px;
+  }
+
+  .captureMedia {
+    min-height: 320px;
+  }
+
+  .capturePhone {
+    bottom: -28px;
+    width: 142px;
+    height: 291px;
+  }
+
+  .capturePhoneShare {
+    left: 10px;
+  }
+
+  .capturePhoneSave {
+    right: 10px;
+    transform: translateY(12px) rotate(2deg);
+  }
+
+  .spaceNoteLead h3 {
+    font-size: 22px;
+  }
+
+  .editorialHeader {
+    margin-bottom: 36px;
+  }
+
+  .editorialHeader h2 {
+    font-size: clamp(32px, 9.2cqw, 42px);
+  }
+
+  .editorialHeader > p:last-child {
+  }
+
+  .platformList {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* A bare stack of five reads as one long run, so contain each on mobile. */
+  .platformLink {
+    gap: 14px;
+    padding: 18px;
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-sm);
+    background: var(--surface-muted);
+  }
+
+  .platformIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .platformCopy h3 {
+    margin-top: 0;
+  }
+
+  .mobilePlatformNote {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .planDescription,
+  .planPrice {
     min-height: auto;
   }
 
   .billingNote {
-    width: calc(100% - 60px);
+    width: 100%;
   }
-}
 
-@container root (width < 480px) {
-  .heroActions,
+  .closingBand {
+    margin-top: 72px;
+  }
+
+  .closingPanel {
+    grid-template-columns: 1fr;
+    padding: 54px 24px;
+    border-radius: 18px;
+  }
+
   .closingActions {
     width: 100%;
     flex-direction: column;
   }
 
-  .appInformation,
+  .closingActions > a:link,
+  .closingActions > a:visited,
+  .closingActions .mobileOnlyAction > a:link,
+  .closingActions .mobileOnlyAction > a:visited {
+    width: 100%;
+    min-height: 44px;
+    padding: 8px 18px;
+    text-align: center;
+  }
+
+  .closingPanel .mobileOnlyAction > a:link,
+  .closingPanel .mobileOnlyAction > a:visited {
+    border: 1px solid rgb(255 255 255 / 0.28);
+    background: transparent;
+    color: #ffffff;
+  }
+}
+
+@container root (width < 480px) {
+  .heroActions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .heroActions > a:link,
+  .heroActions > a:visited,
+  .closingActions > a:link,
+  .closingActions > a:visited {
+    width: 100%;
+    text-align: center;
+  }
+
+  .platformList,
   .pricing {
-    width: calc(100% - 28px);
+    width: 100%;
   }
 }

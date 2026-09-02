@@ -5,6 +5,13 @@ import {
   readReleaseNotesPage,
   readTotalReleaseNotesPageCount,
 } from "@/lib/release_notes_helpers";
+import { createPageMetadata } from "@/lib/site_metadata";
+
+export const metadata = createPageMetadata({
+  title: "Release Notes | Saver",
+  description: "See what is new, improved, and fixed in Saver.",
+  path: "/release-notes",
+});
 
 export default async function ReleaseNotesIndexPage() {
   const totalPageCount = await readTotalReleaseNotesPageCount(

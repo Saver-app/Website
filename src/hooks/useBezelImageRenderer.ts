@@ -16,12 +16,14 @@ export function useBezelImageRenderer({
   srcset,
   bezel,
   crop,
+  enabled = true,
 }: {
   canvasRef: React.RefObject<HTMLCanvasElement>;
   src: string;
   bezel: Bezel;
   srcset?: ImageSrcsetEntry[];
   crop?: BezelCropConfiguration;
+  enabled?: boolean;
 }) {
   const theme = useTheme();
 
@@ -37,13 +39,14 @@ export function useBezelImageRenderer({
      * if it renders the <img> element instead of <canvas>.
      * Meaning no significant work should be done by this hook.
      */
-    if (theme === null || canvasRef.current === null) {
+    if (!enabled || theme === null || canvasRef.current === null) {
       return;
     }
 
     const bezelConfig = DEVICE_BEZEL_CONFIGURATION_MAP[bezel];
     const imageSrc = findSrcForTheme(src, srcset, theme);
     const globalBackgroundColor = getGlobalBackgroundColor();
+    let cancelled = false;
 
     Promise.all([
       loadImage(imageSrc),
@@ -55,6 +58,10 @@ export function useBezelImageRenderer({
         HTMLImageElement,
         HTMLImageElement
       ]) => {
+        if (cancelled) {
+          return;
+        }
+
         const canvas = canvasRef.current;
         const ctx = canvas?.getContext("2d");
         const scratchCanvas = document.createElement("canvas");
@@ -153,11 +160,31 @@ export function useBezelImageRenderer({
           croppedTargetHeight
         );
       }
-    );
+    ).catch((error: unknown) => {
+      if (!cancelled) {
+        console.warn(
+          `Unable to render the ${bezel} preview after retrying its images.`,
+          error,
+        );
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
     /**
      * TODO: Optimize the srcset dependency (array re-created on every render) to avoid unnecessary reloads
      */
-  }, [src, theme, cropBottomRatio, cropTopRatio, srcset, canvasRef, bezel]);
+  }, [
+    src,
+    theme,
+    cropBottomRatio,
+    cropTopRatio,
+    srcset,
+    canvasRef,
+    bezel,
+    enabled,
+  ]);
 }
 
 function getGlobalBackgroundColor(): string {

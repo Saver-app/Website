@@ -31,7 +31,7 @@ export function IconCard({
     >
       <div className={styles.iconCard}>
         <div className={styles.icon} aria-hidden="true">
-          <Icon name={iconName} size="large" />
+          <Icon name={iconName} size={26} />
         </div>
         <div className={styles.info}>
           <h2 className={`${styles.title} ${titleFontStyleClass}`}>{title}</h2>

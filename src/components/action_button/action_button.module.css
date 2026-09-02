@@ -4,60 +4,68 @@
     display: block;
     color: var(--color-text-accent-brand);
     background-color: var(--color-accent-brand);
-    border-radius: 999px;
+    background-image: none;
     border: none;
-    transition: opacity 0.1s ease-in-out;
+    border-radius: var(--radius-sm);
+    box-shadow: none;
+    font-family: var(--font-display);
+    letter-spacing: var(--tracking-tight);
+    white-space: nowrap;
+    transition: transform var(--duration-fast) var(--ease-out),
+      box-shadow var(--duration) var(--ease-out);
   }
 
   .label {
-    position: relative;
-    left: -2px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .actionLabel {
-    font-weight: 500;
+    font-weight: 600;
   }
 
   &:hover {
-    opacity: 0.7;
+    opacity: 0.84;
+  }
+
+  &:active {
+    transform: scale(0.97);
   }
 
   &.small {
-    padding: 8px 18px;
+    padding: 9px 17px;
 
-		.label {
-			gap: 8px;
-		}
+    .label {
+      gap: 7px;
+    }
 
     .actionLabel {
-      font-size: 16px;
+      font-size: 15px;
     }
   }
 
   &.medium {
-    padding: 10px 20px;
+    padding: 12px 22px;
 
-		.label {
-			gap: 8px;
-		}
+    .label {
+      gap: 8px;
+    }
 
     .actionLabel {
-      font-size: 18px;
+      font-size: 17px;
     }
   }
 
   &.large {
-    padding: 14px 26px;
+    padding: 15px 28px;
 
-		.label {
-			gap: 10px;
-		}
+    .label {
+      gap: 10px;
+    }
 
     .actionLabel {
-      font-size: 22px;
+      font-size: 19px;
     }
   }
 }

@@ -7,7 +7,6 @@ export default function SupportPage() {
     <main className={styles.main}>
       <Section paddingTop={64} paddingBottom={140}>
         <div className={styles.intro}>
-          <p className={styles.eyebrow}>Saver Support</p>
           <h1>How can we help?</h1>
           <p className={styles.subtitle}>
             Tell us what is going on and we will reply to the email address you

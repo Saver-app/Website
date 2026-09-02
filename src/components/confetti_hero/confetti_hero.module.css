@@ -1,0 +1,262 @@
+.hero {
+  width: var(--content-width);
+  margin: 0 auto;
+}
+
+.panel {
+  position: relative;
+  isolation: isolate;
+  min-height: 600px;
+  overflow: clip;
+  border-radius: var(--panel-radius);
+  background: var(--surface-dark);
+  color: #fafaf7;
+}
+
+.decorations {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+}
+
+.piece {
+  position: absolute;
+  top: var(--piece-top);
+  left: var(--piece-left);
+  width: var(--piece-width);
+  height: var(--piece-width);
+  transform: translate(-50%, -50%) rotate(var(--piece-rotation));
+  transform-origin: center;
+}
+
+.piece img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.layout {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 600px;
+  display: grid;
+  place-items: center;
+}
+
+.layoutWithMedia {
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  gap: 32px;
+  padding: 44px 56px 0 64px;
+}
+
+.content {
+  width: min(800px, calc(100% - 64px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 64px 0;
+  text-align: center;
+}
+
+.layoutWithMedia .content {
+  width: 100%;
+  align-items: flex-start;
+  padding: 48px 0 92px;
+  text-align: left;
+}
+
+.content h1 {
+  max-width: 720px;
+  font-family: var(--font-heavy);
+  font-size: clamp(44px, 5.2cqw, 64px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.038em;
+  color: #fafaf7;
+}
+
+.layoutWithMedia .content h1 {
+  max-width: 650px;
+  font-size: clamp(42px, 4.5cqw, 58px);
+}
+
+.content > p {
+  max-width: 560px;
+  margin-top: 22px;
+  color: rgb(250 250 247 / 0.66);
+  font-size: 18px;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.action {
+  margin-top: 30px;
+}
+
+.media {
+  position: relative;
+  width: 100%;
+  height: 556px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: end;
+}
+
+/*
+  Only meaningful while the copy and the media are side by side - once the
+  layout stacks there is no column gap, and the pieces that have a stacked
+  placement are moved rather than dropped.
+*/
+@container root (821px <= width < 1200px) {
+  .piece[data-zone="gutter"] {
+    display: none;
+  }
+}
+
+@container root (width < 1000px) {
+  .panel {
+    min-height: 560px;
+  }
+
+  .layout {
+    min-height: 560px;
+  }
+
+  .layoutWithMedia {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.72fr);
+    gap: 24px;
+    padding: 40px 36px 0 44px;
+  }
+
+  .content {
+    width: min(680px, calc(100% - 56px));
+  }
+
+  .content h1 {
+    max-width: 620px;
+    font-size: clamp(40px, 6cqw, 50px);
+  }
+
+  .layoutWithMedia .content {
+    width: 100%;
+    padding-bottom: 72px;
+  }
+
+  .layoutWithMedia .content h1 {
+    font-size: clamp(40px, 5cqw, 50px);
+  }
+
+  .media {
+    height: 500px;
+  }
+}
+
+@container root (width < 821px) {
+  /*
+    The stacked copy runs nearly edge to edge, so the desktop placements land
+    on top of the title. Swapping the set here rather than from a matchMedia
+    listener keeps it tied to the same breakpoint the layout stacks at - the
+    two used to disagree by the width of the scrollbar, which showed the
+    desktop confetti over the stacked headline.
+  */
+  .piece[data-placement="desktop"] {
+    display: none;
+  }
+
+  .piece[data-placement="both"] {
+    top: var(--piece-top-mobile);
+    left: var(--piece-left-mobile);
+    width: var(--piece-width-mobile);
+    height: var(--piece-width-mobile);
+  }
+
+  .panel {
+    min-height: 0;
+    border-radius: 18px;
+  }
+
+  .layout,
+  .layoutWithMedia {
+    min-height: 0;
+  }
+
+  .layoutWithMedia {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 300px;
+    gap: 18px;
+    padding: 34px 24px 0;
+  }
+
+  .content {
+    width: calc(100% - 36px);
+    padding: 56px 0;
+  }
+
+  .layoutWithMedia .content {
+    width: 100%;
+    padding: 0;
+  }
+
+  .content h1 {
+    font-size: clamp(32px, 8.8cqw, 36px);
+  }
+
+  /*
+    Sized so the second sentence of a two-sentence title still clears the
+    stacked line box on a phone; it only wraps again below ~340px.
+  */
+  .layoutWithMedia .content h1 {
+    font-size: clamp(28px, 8.2cqw, 36px);
+  }
+
+  .content > p {
+    margin-top: 16px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .action {
+    width: 100%;
+    margin-top: 22px;
+  }
+
+  .media {
+    height: 300px;
+  }
+}
+
+@container root (width < 480px) {
+  .layoutWithMedia {
+    gap: 14px;
+    padding: 30px 18px 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .piece {
+    animation: piece-in 500ms var(--ease-out) both;
+  }
+
+  .piece:nth-child(3n + 2) {
+    animation-delay: 45ms;
+  }
+
+  .piece:nth-child(3n) {
+    animation-delay: 90ms;
+  }
+}
+
+@keyframes piece-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--piece-rotation)) scale(0.82);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--piece-rotation)) scale(1);
+  }
+}

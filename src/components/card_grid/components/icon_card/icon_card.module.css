@@ -2,30 +2,37 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: space-between;
-  gap: 0;
+  justify-content: flex-start;
+  gap: 24px;
   text-align: start;
   padding: 30px;
   height: 100%;
 }
 
 .icon {
-  height: 32px;
+  display: flex;
   flex-shrink: 0;
-  color: var(--color-accent-brand);
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-brand-strong);
+  color: var(--color-accent-gold);
 }
 
 .info {
-  min-height: 50%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
 }
 
 .title {
-	font-size: 17px;
-	line-height: 1.1;
+	font-size: 19px;
+	line-height: 1.15;
 	font-weight: 700;
+	letter-spacing: var(--tracking-tight);
 
 	&.whimsical {
 		font-size: 32px;
@@ -37,30 +44,23 @@
 }
 
 .description {
-  font-size: 17px;
-  line-height: 1.1;
-  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 450;
   color: var(--color-text-secondary);
+  text-wrap: pretty;
 }
 
 @container mediaCard (width >= 580px) {
   .iconCard {
-    position: relative;
-    top: -16px;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-    text-align: center;
+    padding: 34px;
   }
 
-  .icon {}
-
   .info {
-    min-height: auto;
-    max-width: 370px;
+    max-width: 460px;
   }
 
   .title {
-    font-size: 24px;
+    font-size: 21px;
   }
 }

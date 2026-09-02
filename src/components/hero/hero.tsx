@@ -11,6 +11,12 @@ interface HeroProps {
   badges?: React.ReactNode;
   media: React.ReactNode;
   action?: React.ReactNode;
+  /**
+   * "split" places the copy next to the media inside the page grid.
+   * "showcase" is a full-bleed, centre-aligned panel with the media below the
+   * copy and cropped by the panel edge.
+   */
+  variant?: "split" | "showcase";
 }
 
 export function Hero({
@@ -20,11 +26,33 @@ export function Hero({
   badges,
   media,
   action,
+  variant = "split",
 }: HeroProps) {
   const titleFontStyleClass = buildClassNameForFontStyle(titleFontStyle, {
     whimsical: styles.whimsical,
     cursive: styles.cursive,
   });
+
+  if (variant === "showcase") {
+    return (
+      <div className={styles.showcase}>
+        <div className={styles.showcasePanel}>
+          <div className={styles.showcaseContent}>
+            {badges && <div className={styles.badges}>{badges}</div>}
+
+            <h1 className={`${styles.showcaseTitle} ${titleFontStyleClass}`}>
+              {title}
+            </h1>
+            <p className={styles.showcaseSubtitle}>{subtitle}</p>
+
+            {action && <div className={styles.showcaseAction}>{action}</div>}
+          </div>
+
+          <div className={styles.showcaseMedia}>{media}</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.hero}>

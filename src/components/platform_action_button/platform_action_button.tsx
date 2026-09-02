@@ -7,7 +7,6 @@ import {
   APP_STORE_DEEP_LINK,
   APP_STORE_URL,
   PLAY_STORE_URL,
-  WEB_APP_URL,
 } from "@/constants";
 
 interface PlatformActionButtonProps {
@@ -83,10 +82,11 @@ export function PlatformActionButton({
 
   return (
     <DownloadActionButton
-      href={WEB_APP_URL}
-      label="Open Web App"
+      href="/download"
+      label="Get Saver"
       size={size}
       showAppleLogo={false}
+      openInNewTab={false}
     />
   );
 }

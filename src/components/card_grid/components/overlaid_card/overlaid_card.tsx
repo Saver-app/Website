@@ -162,5 +162,5 @@ function getImageBrightness(img: HTMLImageElement): number {
     colorSum += avg;
   }
 
-  return colorSum / (data.length / 4); // 0–255
+  return colorSum / (data.length / 4); // 0-255
 }

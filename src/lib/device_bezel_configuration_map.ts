@@ -55,7 +55,7 @@ export const DEVICE_BEZEL_CONFIGURATION_MAP: Record<Bezel, BezelConfiguration> =
       shadowBottomOffset: -2,
     },
     "iPhone 17 Pro Silver": {
-      src: "/app_view/bezels/iphone_17_pro/silver_portrait.png",
+      src: "/app_view/bezels/iphone_17_pro/silver_portrait.webp",
       maskSrc: "/app_view/bezels/iphone_17_pro/mask.png",
       horizontalOffset: 72,
       verticalOffset: 69,

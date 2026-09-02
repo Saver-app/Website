@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   description:
     "Internal tool for generating Open Graph image visible when your app's website is shared on social media.",
   metadataBase: new URL("http://localhost:3000"),
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+  },
 };
 
 export default function RootLayout({
