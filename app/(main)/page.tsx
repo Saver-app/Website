@@ -294,7 +294,7 @@ export default function Page() {
           <p>
             A trip is more than a to-do list. Keep packing tasks, booking
             links, and the habits you’re building in one place. The same goes
-            for a course, a move, or whatever comes next.
+            for a course or whatever comes next.
           </p>
           <a
             className={styles.spaceLink}
