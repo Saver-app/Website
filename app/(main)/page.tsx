@@ -236,18 +236,18 @@ export default function Page() {
           /*
             Two sentences on one line reads as a run-on once the title wraps,
             so each is its own block on mobile and the breaks land on the
-            full stop instead of orphaning "One" onto the line above.
+            full stop instead of orphaning "All" onto the line above.
           */
           <>
             <span className={styles.heroTitleSentence}>
               Bookmarks, tasks, and habits.
             </span>{" "}
             <span className={styles.heroTitleSentence}>
-              One less app to juggle.
+              All in one space.
             </span>
           </>
         }
-        subtitle="Send it over from wherever you found it and it lands in the space it belongs to"
+        subtitle="Share it from any app and it lands exactly where it belongs"
         action={
           <div className={styles.heroActionStack}>
             <div className={styles.heroActions}>
