@@ -136,6 +136,7 @@ export default function RootLayout({
                     title="Support"
                     links={[
                       { label: "Contact Us", href: "/support" },
+                      { label: "Feedback & Roadmap", href: "https://saverapp.canny.io", external: true },
                     ]}
                   />
                   <MultiColumnFooter.Column
